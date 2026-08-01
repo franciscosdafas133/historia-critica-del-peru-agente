@@ -1,0 +1,173 @@
+@import 'tailwindcss';
+
+/* Tema oscuro activado por clase .dark en <html>, controlado por useTheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Fondo marfil / gris cálido — base "mesa de estudio", no blanco puro. */
+  --color-surface-50: #faf9f6;
+  --color-surface-100: #f4f2ed;
+  --color-surface-200: #e9e6de;
+  --color-surface-300: #d9d4c8;
+
+  /* Azul marino — color principal de marca y navegación. */
+  --color-brand-50: #eef2f8;
+  --color-brand-100: #d6e0ee;
+  --color-brand-300: #7f9cc1;
+  --color-brand-500: #2c4a6e;
+  --color-brand-600: #1f3a5a;
+  --color-brand-700: #172c46;
+  --color-brand-900: #0d1b2e;
+
+  /* Índigo — reservado para acciones relacionadas con IA/tutor. */
+  --color-tutor-50: #f1effc;
+  --color-tutor-100: #e0dcf7;
+  --color-tutor-300: #ab9fe8;
+  --color-tutor-500: #6552c9;
+  --color-tutor-600: #5442ab;
+  --color-tutor-700: #423589;
+
+  /* Verde azulado — estados positivos / comprendido. */
+  --color-positive-50: #eaf6f4;
+  --color-positive-100: #cdeae5;
+  --color-positive-300: #7ec7bc;
+  --color-positive-500: #2f8f80;
+  --color-positive-600: #23786b;
+
+  /* Ámbar — atención / necesita refuerzo (no rojo alarmante). */
+  --color-attention-50: #fbf3e7;
+  --color-attention-100: #f5e2c1;
+  --color-attention-300: #e0ac52;
+  --color-attention-500: #b97f22;
+  --color-attention-600: #96661a;
+
+  /* Colores suaves por unidad (chips de unidad, acentos discretos). */
+  --color-unit-1: #4c6f92;
+  --color-unit-2: #7a6bb0;
+
+  /* Texto sobre fondo marfil. */
+  --color-ink-900: #1c2430;
+  --color-ink-700: #3d4759;
+  --color-ink-500: #64748b;
+  --color-ink-300: #94a3b8;
+
+  --shadow-soft: 0 1px 2px rgba(23, 33, 51, 0.04), 0 4px 12px -4px rgba(23, 33, 51, 0.08);
+  --shadow-soft-lg: 0 4px 8px rgba(23, 33, 51, 0.05), 0 12px 28px -8px rgba(23, 33, 51, 0.14);
+
+  --animate-modal-in: modal-in 0.15s ease-out;
+  --animate-drawer-in: drawer-in 0.2s ease-out;
+  --animate-fade-in: fade-in 0.2s ease-out;
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes drawer-in {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* --- Tema oscuro: se redefinen los mismos tokens, los componentes no cambian --- */
+.dark {
+  --color-surface-50: #12161f;
+  --color-surface-100: #171c27;
+  --color-surface-200: #212734;
+  --color-surface-300: #2c3444;
+
+  --color-brand-50: #182234;
+  --color-brand-100: #1f2d45;
+  --color-brand-300: #4f6c8f;
+  --color-brand-500: #7f9cc1;
+  --color-brand-600: #a3bcda;
+  --color-brand-700: #c7d6e9;
+  --color-brand-900: #eef2f8;
+
+  --color-tutor-50: #1c1830;
+  --color-tutor-100: #262040;
+  --color-tutor-300: #8b7bd8;
+  --color-tutor-500: #a898ea;
+  --color-tutor-600: #bcaef0;
+  --color-tutor-700: #d3c9f5;
+
+  --color-positive-50: #10231f;
+  --color-positive-100: #123329;
+  --color-positive-300: #4f9788;
+  --color-positive-500: #6ec2b1;
+  --color-positive-600: #8ad4c5;
+
+  --color-attention-50: #241b0e;
+  --color-attention-100: #34260f;
+  --color-attention-300: #c99446;
+  --color-attention-500: #dcab5f;
+  --color-attention-600: #e8bd7d;
+
+  --color-ink-900: #f1f0ec;
+  --color-ink-700: #d3d2cd;
+  --color-ink-500: #9a9a97;
+  --color-ink-300: #6b6c70;
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px -4px rgba(0, 0, 0, 0.4);
+  --shadow-soft-lg: 0 4px 8px rgba(0, 0, 0, 0.35), 0 12px 28px -8px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-surface-100 text-ink-900 antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-tutor-500 rounded-sm;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utilidad para truncar a N líneas en tarjetas de material/evidencia. */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

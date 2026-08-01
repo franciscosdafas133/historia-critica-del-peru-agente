@@ -1,0 +1,29 @@
+# CLAVES DE API — nunca deben salir de esta máquina
+.env
+.env.*
+!.env.ejemplo
+*.key
+secrets.json
+
+# Corpus procesado: indice.pkl se incluye a proposito (el backend en
+# produccion lo necesita para arrancar). El resto de artefactos intermedios
+# de la ingesta se excluye por no ser necesario para servir.
+corpus/*
+!corpus/indice.pkl
+!corpus/.gitkeep
+
+# Material del curso original — con derechos de autor, no redistribuible
+carpeta_documentos/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Logs y temporales
+servidor.log
+*.log
+.DS_Store
+Thumbs.db
