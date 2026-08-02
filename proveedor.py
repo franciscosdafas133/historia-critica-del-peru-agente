@@ -10,6 +10,7 @@ Proveedores soportados:
   gemini     (Google)     GEMINI_API_KEY
   anthropic  (Anthropic)  ANTHROPIC_API_KEY
   groq       (Groq)       GROQ_API_KEY
+  cohere     (Cohere)     COHERE_API_KEY
 
 Las claves se leen de un archivo .env local que NUNCA se sube a ningun
 repositorio (esta en .gitignore). Nada en este modulo imprime la clave.
@@ -38,6 +39,7 @@ DEFECTO = {
     "gemini": "gemini-flash-latest",
     "anthropic": "claude-sonnet-5",
     "groq": "llama-3.3-70b-versatile",
+    "cohere": "command-a-03-2025",
 }
 
 # Modelo de reserva por proveedor: si el principal sigue caido (503) o sin
@@ -49,6 +51,7 @@ RESERVA = {
     "gemini": "gemini-2.0-flash",
     "anthropic": "claude-haiku-4-5",
     "groq": "llama-3.1-8b-instant",
+    "cohere": "command-r7b-12-2024",
 }
 
 
@@ -66,6 +69,8 @@ def proveedor_activo():
         disponibles.append("anthropic")
     if os.environ.get("GROQ_API_KEY"):
         disponibles.append("groq")
+    if os.environ.get("COHERE_API_KEY"):
+        disponibles.append("cohere")
 
     if forzado:
         prov = forzado if forzado in disponibles else None
@@ -158,6 +163,30 @@ def _generar_groq(sistema, usuario, modelo, max_tokens):
     }
 
 
+def _generar_cohere(sistema, usuario, modelo, max_tokens):
+    import cohere
+
+    cli = cohere.ClientV2()
+    resp = cli.chat(
+        model=modelo,
+        max_tokens=max_tokens,
+        temperature=0.3,
+        messages=[
+            {"role": "system", "content": sistema},
+            {"role": "user", "content": usuario},
+        ],
+    )
+    texto = "".join(b.text for b in resp.message.content if b.type == "text")
+    return {
+        "texto": texto,
+        "entrada": resp.usage.tokens.input_tokens,
+        "salida": resp.usage.tokens.output_tokens,
+        "cache_lectura": 0,
+        "cache_escritura": 0,
+        "rechazado": not texto.strip(),
+    }
+
+
 def _es_transitorio(e):
     """Distingue un fallo pasajero (sobrecarga, cuota, red) de un error real
     de la peticion (clave invalida, modelo inexistente, prompt rechazado).
@@ -207,10 +236,13 @@ def generar(sistema, usuario, max_tokens=6000):
     if not prov:
         raise RuntimeError(
             "No hay clave de API configurada. Crea un archivo .env con "
-            "GEMINI_API_KEY=... (o ANTHROPIC_API_KEY=..., o GROQ_API_KEY=...)"
+            "GEMINI_API_KEY=... (o ANTHROPIC_API_KEY=..., GROQ_API_KEY=..., COHERE_API_KEY=...)"
         )
 
-    FUNCIONES = {"gemini": _generar_gemini, "anthropic": _generar_anthropic, "groq": _generar_groq}
+    FUNCIONES = {
+        "gemini": _generar_gemini, "anthropic": _generar_anthropic,
+        "groq": _generar_groq, "cohere": _generar_cohere,
+    }
     fn = FUNCIONES[prov]
     t0 = time.time()
     modelo_usado = modelo
