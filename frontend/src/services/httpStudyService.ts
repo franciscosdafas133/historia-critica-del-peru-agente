@@ -42,17 +42,35 @@ async function preguntar(pregunta: string, modo: string): Promise<BackendRespues
 }
 
 const SIN_EVIDENCIA = 'El material autorizado del curso no cubre esta consulta.'
+const CUOTA_AGOTADA =
+  'El tutor alcanzó el límite de consultas gratuitas por hoy. Vuelve a intentarlo en unos minutos o mañana.'
+const ERROR_GENERICO = 'Hubo un problema generando la respuesta. Inténtalo de nuevo en unos momentos.'
+
+/** El backend expone el error crudo del proveedor (traceback de Python) en
+ * `error_generacion` — nunca se muestra tal cual al estudiante. Se traduce
+ * a un mensaje breve y accionable; el caso de cuota agotada (429) es el más
+ * común en el tier gratuito y merece un mensaje específico. */
+function friendlyError(raw: string): string {
+  if (/RESOURCE_EXHAUSTED|429|quota/i.test(raw)) return CUOTA_AGOTADA
+  return ERROR_GENERICO
+}
+
+function narrativeFrom(data: BackendRespuesta): string {
+  if (data.respuesta) return data.respuesta
+  if (data.error_generacion) return friendlyError(data.error_generacion)
+  if (data.paquetes.length === 0) return SIN_EVIDENCIA
+  return ''
+}
 
 export const httpStudyService: StudyService = {
   async askUnderstand(question, _topicId): Promise<UnderstandResponse> {
     const data = await preguntar(question, 'preguntar')
     const evidence = evidenceFromPaquetes(data.paquetes)
-    const rawText = data.respuesta ?? data.error_generacion ?? (data.paquetes.length === 0 ? SIN_EVIDENCIA : '')
     return {
       answer: { mainIdea: '', explanation: '', example: '', checkQuestion: '' },
       evidence,
       confidence: confidenceFrom(evidence),
-      rawText,
+      rawText: narrativeFrom(data),
     }
   },
 
@@ -67,7 +85,7 @@ export const httpStudyService: StudyService = {
     const pregunta = `${SOLVE_PROMPT}\n\nMi intento de respuesta: ${attempt}`
     const data = await preguntar(pregunta, 'resolver')
     return {
-      feedback: data.respuesta ?? data.error_generacion ?? SIN_EVIDENCIA,
+      feedback: narrativeFrom(data),
       strengths: [],
       gaps: [],
     }
@@ -93,7 +111,7 @@ export const httpStudyService: StudyService = {
     return {
       id: `practicar-${Date.now()}`,
       topicId: topicId ?? '',
-      prompt: data.respuesta ?? data.error_generacion ?? SIN_EVIDENCIA,
+      prompt: narrativeFrom(data),
       correctAnswer: '',
       explanation: '',
       evidenceIds: [],
@@ -130,7 +148,7 @@ export const httpStudyService: StudyService = {
       return {
         id: `evaluar-${Date.now()}-${i}`,
         topicId: topicId ?? '',
-        prompt: data.respuesta ?? data.error_generacion ?? SIN_EVIDENCIA,
+        prompt: narrativeFrom(data),
         correctAnswer: '',
         explanation: '',
         evidenceIds: [],
@@ -147,7 +165,7 @@ export const httpStudyService: StudyService = {
     return [{
       id: `repasar-${Date.now()}`,
       topicId: topicId ?? '',
-      question: data.respuesta ?? data.error_generacion ?? SIN_EVIDENCIA,
+      question: narrativeFrom(data),
       answer: '',
       evidenceIds: [],
     }]
@@ -156,14 +174,13 @@ export const httpStudyService: StudyService = {
   async submitDebateThesis(thesis, _topicId): Promise<DebateResponse> {
     const data = await preguntar(thesis, 'debate')
     const evidence = evidenceFromPaquetes(data.paquetes)
-    const rawText = data.respuesta ?? data.error_generacion ?? (data.paquetes.length === 0 ? SIN_EVIDENCIA : '')
     return {
       restatedThesis: '',
       supportingEvidence: evidence,
       tensioningEvidence: [],
       verdict: '',
       closingQuestion: '',
-      rawText,
+      rawText: narrativeFrom(data),
     }
   },
 }
