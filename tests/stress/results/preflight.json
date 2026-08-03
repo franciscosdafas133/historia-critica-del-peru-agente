@@ -1,0 +1,87 @@
+{
+  "base_url": "https://historia-critica-del-peru-agente.onrender.com",
+  "frontend_url": "https://historia-critica-del-peru-agente.vercel.app",
+  "checks": [
+    {
+      "check": "dns",
+      "ok": true,
+      "detalle": "historia-critica-del-peru-agente.onrender.com -> 216.24.57.7 en 9ms"
+    },
+    {
+      "check": "tls",
+      "ok": true,
+      "detalle": "valido hasta Oct 22 21:54:17 2026 GMT"
+    },
+    {
+      "check": "health /api/info",
+      "ok": true,
+      "detalle": "200 docs=39 bloques=1310 prov=cohere 1158ms"
+    },
+    {
+      "check": "frontend publico (sin login)",
+      "ok": true,
+      "detalle": "200 url_final=https://historia-critica-del-peru-agente.vercel.app/"
+    },
+    {
+      "check": "consulta minima",
+      "ok": true,
+      "detalle": "200 en 1082ms, ms_recuperacion=3.3, faltan=[]"
+    },
+    {
+      "check": "devuelve evidencia",
+      "ok": true,
+      "detalle": "1 paquetes"
+    },
+    {
+      "check": "contrato de procedencia en paquete",
+      "ok": true,
+      "detalle": "faltan=[]"
+    },
+    {
+      "check": "procedencia no vacia",
+      "ok": true,
+      "detalle": "archivo=Historia Crítica del Perú - 122005 - A (2026-01-PRE).pdf ubicacion=pagina 3 cita=Historia Crítica del Perú - 122005 - A ("
+    },
+    {
+      "check": "consulta real (warm)",
+      "ok": true,
+      "detalle": "2412ms ms_recuperacion=1294.2 paquetes=2"
+    }
+  ],
+  "info": {
+    "api_disponible": true,
+    "bloques": 1310,
+    "curso": {
+      "codigo": "122005",
+      "creditos": 4,
+      "departamento": "Humanidades",
+      "nombre": "Historia Crítica del Perú",
+      "periodo": "2026-1",
+      "profesor": "Juan Fonseca",
+      "seccion": "A"
+    },
+    "documentos": 39,
+    "modelo": "command-a-03-2025",
+    "proveedor": "cohere",
+    "semanas": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "tokens": 738363
+  },
+  "baseline_ms": 1082.4790000915527,
+  "baseline_ms_recuperacion": 3.3,
+  "warm_ms": 2411.7133617401123,
+  "preflight_ok": true
+}

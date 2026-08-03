@@ -1,0 +1,40 @@
+{
+  "auditoria": "2026-08-03, commit local con ea33d2f desplegado en Render (la correccion de tipeo corregir_terminos_query existe SOLO en el arbol local, no desplegada)",
+  "frontend_url": "https://historia-critica-del-peru-agente.vercel.app",
+  "backend_url": "https://historia-critica-del-peru-agente.onrender.com",
+  "staging": null,
+  "autenticacion": "ninguna (endpoints publicos; CORS restringido a FRONTEND_URL para navegadores, no aplica a clientes directos)",
+  "endpoints": {
+    "GET /api/info": "salud + metadata del indice (documentos, bloques, tokens, proveedor LLM activo). Sirve como health check.",
+    "POST /api/preguntar": "cuerpo {pregunta, modo?, generar?}. Sin generar:true => SOLO recuperacion FORMA-IR (sin LLM). Con generar:true y API key => ademas genera respuesta con el LLM.",
+    "POST /api/comparar": "compara costo en tokens de 3 estrategias de contexto (no usa LLM)",
+    "GET /": "pagina HTML embebida de prueba"
+  },
+  "separacion_recuperacion_generacion": "NATIVA: /api/preguntar sin generar:true ejecuta el pipeline FORMA-IR completo y devuelve evidencia sin tocar el LLM. No hace falta endpoint diagnostico nuevo.",
+  "contrato_respuesta_api": {
+    "pregunta": "str", "modo": "str", "tipo": "str", "presupuesto": "int",
+    "tokens_evidencia": "int", "filtros": "dict (vacio con FORMA-IR)",
+    "paquetes": "[{n, documento, cita, ubicacion('pagina N'), archivo, tipo, autoridad, unidad(=unidad_id FORMA-IR), semana, tokens, score(BM25F fase E), cobertura(cobertura IDF fase E), ocr, extracto(<=600 chars)}]",
+    "avisos": "[str] (incluye avisos de calibracion debil)",
+    "ms_recuperacion": "float (unico timing por etapa expuesto)",
+    "respuesta|verificacion|uso|error_generacion|estructurado": "solo con generar:true"
+  },
+  "contrato_interno_forma_ir": {
+    "funcion": "forma_ir.comparar_con_produccion.responder_consulta(query, indice, presupuesto_tokens, epsilon, top_k_documentos)",
+    "campos": "query, correcciones_tipeo(local), documentos[{doc_id,p_doc,m_d}], unidades_empaquetadas[{unidad_id,doc_id,pagina_inicio,texto,score,cobertura}], tokens_totales, fraccion_evidencia_retenida, latencia_s, cobertura"
+  },
+  "infraestructura": {
+    "backend": "Render free tier, gunicorn --timeout 90 (Procfile), WEB_CONCURRENCY=1 (observado en log de deploy: un solo worker => las peticiones se atienden en cola)",
+    "frontend": "Vercel estatico (SPA rewrite en vercel.json), llama al backend directamente",
+    "indice": "en memoria por proceso; carga diferida en la primera consulta (~40s observados en frio incluyendo build del indice FORMA-IR); Render free duerme el servicio tras inactividad",
+    "base_de_datos": "ninguna", "cache": "ninguna (sin cache de respuestas)",
+    "rate_limits": "ninguno propio; los del proveedor LLM aplican solo con generar:true",
+    "reintentos": "ninguno en el backend",
+    "llm": "multi-proveedor (proveedor.py): activo actualmente cohere/command-a-03-2025 segun /api/info",
+    "observabilidad": "print a stderr en errores de generacion; SIN request_id, SIN timings por etapa interna, SIN metricas de proceso expuestas (limitacion documentada)"
+  },
+  "datasets_previos": {
+    "eval/data/golden_dataset.jsonl": "57 preguntas realistas, 0/57 con gold anotado (limitacion heredada documentada)",
+    "tests_previos": "113 tests unitarios/integracion de forma_ir (tests/forma_ir/, tests/paper_conformance/, etc.)"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "url": "https://historia-critica-del-peru-agente.onrender.com/api/preguntar",
+  "pruebas": {
+    "marcadores": {
+      "n": 10,
+      "fugas": [],
+      "ok": true
+    },
+    "determinismo": {
+      "n": 40,
+      "ok_respuestas": 40,
+      "errores": 0,
+      "firmas_distintas": 1,
+      "determinista": true,
+      "muestras": [
+        [
+          "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Clase_S1_1a_Historia_Crítica.pdf"
+        ]
+      ]
+    },
+    "cruce_respuestas": {
+      "n": 20,
+      "cruces": [],
+      "ok": true
+    },
+    "request_id_duplicado": {
+      "n": 5,
+      "todas_200": true,
+      "docs_iguales": true,
+      "ok": true
+    }
+  },
+  "hard_gate_fugas": 0
+}

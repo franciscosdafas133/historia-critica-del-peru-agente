@@ -27,7 +27,7 @@ from forma_ir.calibracion import construir_reservorios_por_familia, p_valor_cali
 from forma_ir.documento import agregar_documentos, rankear_unidades_de_documento
 from forma_ir.empaquetado import empaquetar_por_cobertura_submodular
 from forma_ir.evidencia import (VectorEvidencia, calcular_idf, calcular_vector_evidencia,
-                                  precomputar_unidad, tokenizar)
+                                  precomputar_unidad, tokenizar, tokenizar_consulta)
 from forma_ir.firma import secuencia_de_firmas
 from forma_ir.tipos import Bloque, UnidadRetenida
 
@@ -118,6 +118,44 @@ def preparar_indice():
     }
 
 
+def corregir_terminos_query(query: str, vocabulario: dict) -> tuple[str, list[tuple[str, str]]]:
+    """Correccion lexica de terminos de la consulta que NO existen en el
+    vocabulario del corpus: se sustituyen por la palabra mas cercana por
+    similitud de secuencia de caracteres (difflib, umbral 0.75), solo
+    para tokens de 4+ letras (corregir tokens muy cortos produce falsos
+    positivos: 'la' esta a 1 edicion de decenas de palabras).
+
+    Motivacion (encontrada en pruebas reales de produccion): un
+    estudiante escribio 'que paso con poeru' y el metodo, puramente
+    lexico, busco el token literal 'poeru' -- que no existe en el corpus
+    -- y devolvio evidencia tangencial con aviso de insuficiencia,
+    cuando 'peru' (a 1 edicion de distancia) esta en practicamente todo
+    el corpus. Esto es normalizacion de consulta puramente lexica y
+    training-free: no introduce embeddings, modelos ni semantica, asi
+    que no viola las restricciones del nucleo del metodo (R5 del paper).
+
+    Devuelve (query_corregida, lista de (termino_original, correccion))
+    -- la lista permite reportar la correccion al usuario de forma
+    auditable ('se interpreto X como Y'), nunca corregir en silencio."""
+    import difflib
+    tokens = tokenizar(query)
+    correcciones = []
+    tokens_corregidos = []
+    for t in tokens:
+        if t in vocabulario or len(t) < 4:
+            tokens_corregidos.append(t)
+            continue
+        cercanas = difflib.get_close_matches(t, vocabulario.keys(), n=1, cutoff=0.75)
+        if cercanas:
+            tokens_corregidos.append(cercanas[0])
+            correcciones.append((t, cercanas[0]))
+        else:
+            tokens_corregidos.append(t)
+    if not correcciones:
+        return query, []
+    return " ".join(tokens_corregidos), correcciones
+
+
 def responder_consulta(query: str, indice: dict, presupuesto_tokens: int = 2048, epsilon: float = 0.1,
                          top_k_documentos: int = 5) -> dict:
     """Pipeline completo E->F->G->H para una sola consulta. Devuelve un
@@ -130,6 +168,12 @@ def responder_consulta(query: str, indice: dict, presupuesto_tokens: int = 2048,
     reservorios = indice["reservorios"]
     bloques_por_doc = indice["bloques_por_doc"]
     firmas_por_doc = indice["firmas_por_doc"]
+
+    # Correccion de tipeo contra el vocabulario del corpus (ver
+    # corregir_terminos_query) -- se aplica ANTES de todo el pipeline,
+    # y las correcciones se reportan en la salida para que el consumidor
+    # (agente/frontend) pueda mostrarselas al estudiante.
+    query, correcciones_tipeo = corregir_terminos_query(query, idf)
 
     # Pre-filtro por indice invertido: solo se evaluan unidades cuyo
     # CUERPO comparte al menos un termino con la consulta. Una unidad
@@ -145,7 +189,7 @@ def responder_consulta(query: str, indice: dict, presupuesto_tokens: int = 2048,
     # directamente morian y el frontend quedaba girando para siempre).
     indice_invertido = indice.get("indice_invertido", {})
     precomputados = indice.get("precomputados", {})
-    tokens_query = tokenizar(query)
+    tokens_query = tokenizar_consulta(query)
     if indice_invertido:
         candidatas_ids: set = set()
         for t in set(tokens_query):
@@ -184,9 +228,71 @@ def responder_consulta(query: str, indice: dict, presupuesto_tokens: int = 2048,
         p_valores_por_doc[u.doc_id][u.unidad_id] = p
         vectores_por_unidad[u.unidad_id] = vector
 
+    # --- Filtro de ELEGIBILIDAD (paper S5.6: "m_d eligible antichain units") ---
+    #
+    # Defecto encontrado en el estres de recuperacion: se estaba usando como
+    # m_d el numero de unidades que comparten AL MENOS UN TOKEN con la
+    # consulta -- incluidas las que solo comparten palabras vacias ("entre",
+    # "como", "fue"). En un libro largo eso da m_d=694, y como
+    # p_doc = min(1, m_d * min p_u), incluso evidencia perfecta
+    # (min p_u ~ 0.001) daba p_doc ~ 0.69: el documento correcto quedaba
+    # peor que uno de una sola unidad con evidencia mediocre. Medido: 0% de
+    # acierto en documentos de 400+ unidades (115/115 fallos en Klaren).
+    #
+    # El paper NO dice "todas las unidades que tocan un token": dice unidades
+    # ELEGIBLES del antichain, es decir las que compiten de verdad como
+    # hipotesis. Se define elegible = cobertura IDF no trivial de la consulta
+    # (comparte contenido, no solo palabras funcionales). Esto respeta la
+    # correccion family-wise (sigue siendo Bonferroni sobre las hipotesis
+    # realmente puestas a prueba) y elimina el castigo por longitud.
+    # Elegibilidad RELATIVA a la mejor evidencia del propio documento, y
+    # tope duro de hipotesis por documento.
+    #
+    # Un umbral absoluto (c >= 0.10) resulto inutil: en un libro largo lo
+    # superan casi todas las unidades (medido: 194 de 194 en Klaren para una
+    # consulta real), de modo que m_d segui siendo enorme y la agregacion
+    # -- Bonferroni o Simes -- volvia a hundir al documento. El antichain
+    # "elegible" del paper no es "todo lo que roza la consulta": son las
+    # hipotesis que compiten de verdad.
+    #
+    # Se aplican dos criterios, ambos puramente lexicos y sin modelos:
+    #   1) c >= max(umbral_absoluto, fraccion * mejor_c_del_documento):
+    #      una unidad marginal frente a la mejor evidencia del MISMO
+    #      documento no es una hipotesis seria, es ruido de vocabulario.
+    #   2) tope de `max_hipotesis` unidades por documento (las de mejor
+    #      p_c). Sin tope, un documento de 1000 unidades pagaria un precio
+    #      de multiplicidad que ningun documento corto puede igualar, que
+    #      es exactamente el sesgo por longitud que se esta corrigiendo.
+    # Valores por defecto elegidos con un barrido medido sobre el corpus
+    # real (fraccion x max_hipotesis), evaluando a la vez el acierto con
+    # texto literal (bench_rapido) y con preguntas parafraseadas de
+    # estudiante: 0.80/5 da Recall@1 = 100% en literal y el mejor
+    # resultado en parafraseadas. Ajustables por entorno sin tocar codigo.
+    umbral_absoluto = float(os.environ.get("FORMA_IR_UMBRAL_ELEGIBLE", "0.10"))
+    fraccion_rel = float(os.environ.get("FORMA_IR_FRACCION_ELEGIBLE", "0.80"))
+    max_hipotesis = int(os.environ.get("FORMA_IR_MAX_HIPOTESIS", "5"))
+
+    p_valores_filtrados: dict[str, dict[str, float]] = {}
+    for doc_id, p_por_unidad in p_valores_por_doc.items():
+        if not p_por_unidad:
+            continue
+        mejor_c = max((vectores_por_unidad[uid].c or 0.0) for uid in p_por_unidad)
+        umbral_doc = max(umbral_absoluto, fraccion_rel * mejor_c)
+        elegibles = {uid: p for uid, p in p_por_unidad.items()
+                     if (vectores_por_unidad[uid].c or 0.0) >= umbral_doc}
+        if not elegibles:
+            mejor = min(p_por_unidad, key=p_por_unidad.get)
+            elegibles = {mejor: p_por_unidad[mejor]}
+        if len(elegibles) > max_hipotesis:
+            mejores = sorted(elegibles.items(), key=lambda par: par[1])[:max_hipotesis]
+            elegibles = dict(mejores)
+        p_valores_filtrados[doc_id] = elegibles
+    p_valores_por_doc = p_valores_filtrados
+
     if not p_valores_por_doc:
         return {
-            "query": query, "documentos": [], "unidades_empaquetadas": [],
+            "query": query, "correcciones_tipeo": correcciones_tipeo,
+            "documentos": [], "unidades_empaquetadas": [],
             "tokens_totales": 0, "latencia_s": time.time() - t0, "cobertura": False,
         }
 
@@ -216,6 +322,7 @@ def responder_consulta(query: str, indice: dict, presupuesto_tokens: int = 2048,
 
     return {
         "query": query,
+        "correcciones_tipeo": correcciones_tipeo,
         "documentos": [{"doc_id": rd.doc_id, "p_doc": rd.p_doc, "m_d": rd.m_d} for rd in top_docs],
         "unidades_empaquetadas": [
             # Texto COMPLETO -- el truncamiento a [:300] de una version

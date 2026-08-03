@@ -42,6 +42,46 @@ def tokenizar(texto: str) -> list[str]:
     return _RE_TOKEN.findall(texto.lower())
 
 
+# Palabras funcionales de PREGUNTA. No son stopwords del corpus (el corpus
+# se sigue indexando entero, sin stemming ni stopwords, tal como pide el
+# paper): son marcadores de acto de habla interrogativo que aparecen en la
+# CONSULTA del usuario y no en la prosa academica indexada.
+#
+# Motivo (medido sobre el corpus real): el IDF las considera raras
+# precisamente porque el corpus casi no contiene preguntas, asi que
+# "cómo" (IDF 5.89) y "qué" (5.77) pesaban MAS que "haciendas" (4.78) o
+# "apra" (5.03). Una pregunta de estudiante quedaba dominada por su
+# andamiaje interrogativo en vez de por su contenido, y el ranking se iba
+# a documentos irrelevantes. Filtrarlas SOLO en la consulta es
+# normalizacion lexica, no semantica: no introduce modelos ni embeddings.
+_FUNCIONALES_CONSULTA = {
+    "que", "qué", "cual", "cuál", "cuales", "cuáles", "quien", "quién",
+    "quienes", "quiénes", "como", "cómo", "cuando", "cuándo", "donde",
+    "dónde", "cuanto", "cuánto", "cuanta", "cuánta", "cuantos", "cuántos",
+    "cuantas", "cuántas", "por", "para", "porque", "por qué", "es", "son",
+    "era", "eran", "fue", "fueron", "ser", "sido", "estar", "esta", "está",
+    "estan", "están", "hay", "tiene", "tienen", "tener", "tuvo", "tuvieron",
+    "hace", "hacen", "hacer", "dice", "dicen", "decir", "dijo",
+    "el", "la", "los", "las", "un", "una", "unos", "unas", "lo", "al", "del",
+    "de", "en", "y", "o", "a", "con", "sin", "sobre", "entre", "se", "su",
+    "sus", "me", "mi", "te", "tu", "nos", "yo", "explicame", "explícame",
+    "dime", "cuentame", "cuéntame", "quiero", "saber", "puedes", "podrias",
+    "podrías", "favor", "ayuda", "ayudame", "ayúdame",
+}
+
+
+def tokenizar_consulta(texto: str, minimo_tokens: int = 2) -> list[str]:
+    """Tokeniza una CONSULTA de usuario descartando palabras funcionales
+    interrogativas (ver `_FUNCIONALES_CONSULTA`).
+
+    Si el filtro dejara menos de `minimo_tokens` terminos (ej. la consulta
+    "¿qué es?"), devuelve la tokenizacion completa sin filtrar: es
+    preferible una consulta ruidosa a una consulta vacia."""
+    todos = tokenizar(texto)
+    filtrados = [t for t in todos if t not in _FUNCIONALES_CONSULTA]
+    return filtrados if len(filtrados) >= minimo_tokens else todos
+
+
 @dataclass
 class VectorEvidencia:
     unidad_id: str
@@ -225,7 +265,9 @@ def calcular_vector_evidencia(query: str, unidad: UnidadRetenida, bloques_doc: l
     unidad -- evita re-tokenizar y re-escanear ancestros en cada consulta
     (ver docstring de precomputar_unidad). Sin el, el calculo es identico
     pero mas lento (compatibilidad con los llamadores/tests existentes)."""
-    tokens_query = tokenizar(query)
+    # Consulta filtrada de palabras funcionales interrogativas
+    # (ver tokenizar_consulta). El CORPUS se sigue tokenizando entero.
+    tokens_query = tokenizar_consulta(query)
 
     if precomputado is not None:
         tokens_cuerpo = precomputado["tokens_cuerpo"]

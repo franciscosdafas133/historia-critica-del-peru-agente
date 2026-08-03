@@ -45,6 +45,7 @@ cached...". Este modulo aplica tres salvaguardas activas:
 import hashlib
 import json
 import math
+import os
 import random
 from collections import defaultdict
 from dataclasses import dataclass
@@ -59,6 +60,37 @@ _COORDENADAS = ("b", "c", "x", "a")
 # debajo de esto, S5.5 exige agrupar con familias vecinas o caer a un
 # fallback univariante conservador -- ver `p_valor_calibrado`.
 MIN_MUESTRAS_POR_FAMILIA = 30
+
+# Fraccion maxima de valores identicos que una coordenada puede tener en el
+# reservorio de referencia antes de considerarse degenerada (sin poder
+# discriminativo) y quedar excluida del estadistico de cuello de botella.
+# Ver `estadistica_cuello_de_botella` para la medicion que motivo esto.
+_UMBRAL_COORDENADA_DEGENERADA = float(os.environ.get("FORMA_IR_UMBRAL_DEGENERADA", "0.5"))
+
+# Cache de coordenadas informativas por reservorio (id(referencia) -> lista).
+# `estadistica_cuello_de_botella` se invoca una vez por unidad candidata y
+# por cada elemento de la mitad de calibracion; recalcular la deteccion de
+# degeneradas en cada llamada seria O(|R_c| * n_coords) redundante.
+_CACHE_INFORMATIVAS: dict[int, list[int]] = {}
+
+
+def _coordenadas_informativas(referencia: list[tuple], n: int) -> list[int]:
+    clave = id(referencia)
+    cache = _CACHE_INFORMATIVAS.get(clave)
+    if cache is not None and len(cache) <= n:
+        return cache
+    informativas = []
+    for k in range(n):
+        valores_k = [r[k] for r in referencia]
+        if not valores_k:
+            continue
+        moda_frac = max(valores_k.count(v) for v in set(valores_k)) / len(valores_k)
+        if moda_frac <= _UMBRAL_COORDENADA_DEGENERADA:
+            informativas.append(k)
+    if not informativas:
+        informativas = list(range(n))
+    _CACHE_INFORMATIVAS[clave] = informativas
+    return informativas
 
 
 @dataclass
@@ -138,7 +170,16 @@ def construir_reservorio_nulo(
     firmas_por_doc: dict[str, list[FirmaForma]],
     idf: dict[str, float],
     longitud_promedio_unidad: float,
-    n_pseudo_queries: int = 200,
+    # 200 pseudo-consultas -> reservorio de ~100/100 -> el p-valor empirico
+    # tiene un SUELO de 1/(|C_c|+1) = 1/101 = 0.0099: ninguna unidad puede
+    # puntuar por debajo de eso por perfecta que sea su evidencia. Medido en
+    # el estres de recuperacion: con ese suelo, decenas de unidades con
+    # cobertura IDF = 1.0 empataban en el mismo p_c minimo y el ranking no
+    # podia distinguirlas; agregado por documento, hundia a los documentos
+    # largos (0% de acierto en 400+ unidades). Subir a 1000 baja el suelo a
+    # ~1/501 = 0.002 y da 5x mas resolucion, a cambio de un indice mas lento
+    # de construir (una sola vez por proceso, no por consulta).
+    n_pseudo_queries: int = int(os.environ.get("FORMA_IR_N_PSEUDO", "1000")),
     n_terminos_por_query: int = 3,
     semilla: int = 12345,
 ) -> ReservorioNulo | None:
@@ -257,9 +298,26 @@ def estadistica_cuello_de_botella(vector: tuple[float, ...], referencia: list[tu
     VectorEvidencia, pero fijar la longitud a una constante del modulo
     rompia con vectores de juguete de otra dimension en los tests del
     checkpoint F (IndexError), y no hay ninguna razon real para que esta
-    funcion matematica generica asuma una dimensionalidad especifica."""
-    rangos = [rango_marginal(vector[k], k, referencia) for k in range(len(vector))]
-    return min(rangos)
+    funcion matematica generica asuma una dimensionalidad especifica.
+
+    COORDENADAS DEGENERADAS: una coordenada casi constante en el nulo no
+    aporta informacion pero SI puede vetar el estadistico, porque el
+    minimo la incluye. Medido en el corpus real: la coordenada de ancla
+    estructural (a) vale 0 en el 84% del reservorio, asi que su rango
+    marginal se topa en ~0.84 y ninguna unidad puede superar ese techo por
+    perfecta que sea su evidencia lexica -- una unidad con z_b=z_c=z_x=1.0
+    (mejor que TODO el nulo en las tres coordenadas lexicas) quedaba con
+    T_c=0.84 y p_c=0.08, indistinguible de evidencia mediocre.
+
+    Esto contradice el espiritu de la Proposicion de invariancia ante
+    transformaciones monotonas por coordenada: una coordenada sin
+    variabilidad en el nulo no define un orden util. Se excluyen del
+    minimo las coordenadas cuya fraccion de valores identicos en la
+    referencia supera `umbral_degenerada` (por defecto 0.5); si todas
+    resultan degeneradas, se usa el minimo sobre todas (comportamiento
+    original) para no dejar el estadistico indefinido."""
+    informativas = _coordenadas_informativas(referencia, len(vector))
+    return min(rango_marginal(vector[k], k, referencia) for k in informativas)
 
 
 def p_valor_calibrado(vector_evidencia: VectorEvidencia, reservorio: ReservorioNulo) -> float:

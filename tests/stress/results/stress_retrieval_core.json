@@ -1,0 +1,220 @@
+{
+  "indice_build_s": 10.87,
+  "n_unidades": 2906,
+  "n_documentos": 36,
+  "A_acierto_escala": {
+    "n": 400,
+    "recall_1_pct": 97.5,
+    "recall_3_pct": 99.5,
+    "recall_5_pct": 99.5,
+    "unidad_exacta_pct": 94.5,
+    "mrr": 0.985,
+    "no_aparece_pct": 0.5
+  },
+  "B_discriminacion": {
+    "docs_mas_perjudicados": [
+      {
+        "doc": "historia-critica-del-peru-122005-a-2026-01-pre",
+        "fallos": 2,
+        "tam": 25
+      },
+      {
+        "doc": "clase-s2-1-transiciones-demograficas-2026-1",
+        "fallos": 1,
+        "tam": 7
+      },
+      {
+        "doc": "contreras-sf-concepto-nacion",
+        "fallos": 1,
+        "tam": 16
+      },
+      {
+        "doc": "aramburu-mendoza-2015-futuro-poblacion-peruana",
+        "fallos": 1,
+        "tam": 64
+      },
+      {
+        "doc": "rivasplatavarillas-2014-cambio-paisajes-costa-norte",
+        "fallos": 1,
+        "tam": 195
+      },
+      {
+        "doc": "cahill-1993-independencia-sociedad-fiscalidad",
+        "fallos": 1,
+        "tam": 92
+      },
+      {
+        "doc": "klaren-1976-haciendas-azucareras-apra",
+        "fallos": 1,
+        "tam": 1029
+      },
+      {
+        "doc": "amat-y-leon-2012-perunuestrodecadadia",
+        "fallos": 1,
+        "tam": 58
+      }
+    ],
+    "_nota": "fallos = veces que su propio texto literal NO lo devolvio como top-1"
+  },
+  "C_robustez_lexica": {
+    "curva": [
+      {
+        "nivel": 0,
+        "descripcion": "intacta",
+        "recall_3_pct": 100.0,
+        "lat_p50_ms": 132.3
+      },
+      {
+        "nivel": 1,
+        "descripcion": "sin tildes",
+        "recall_3_pct": 99.2,
+        "lat_p50_ms": 190.5
+      },
+      {
+        "nivel": 2,
+        "descripcion": "1 typo",
+        "recall_3_pct": 98.3,
+        "lat_p50_ms": 312.2
+      },
+      {
+        "nivel": 3,
+        "descripcion": "2 typos",
+        "recall_3_pct": 97.5,
+        "lat_p50_ms": 423.9
+      },
+      {
+        "nivel": 4,
+        "descripcion": "3 typos+minusculas",
+        "recall_3_pct": 98.3,
+        "lat_p50_ms": 510.5
+      }
+    ],
+    "caida_total_pp": 1.7
+  },
+  "D_sensibilidad_tamano": [
+    {
+      "rango_unidades": "1-10",
+      "n": 16,
+      "recall_1_pct": 87.5,
+      "recall_3_pct": 100.0,
+      "p_doc_correcto_medio": 0.0032
+    },
+    {
+      "rango_unidades": "11-50",
+      "n": 30,
+      "recall_1_pct": 90.0,
+      "recall_3_pct": 96.7,
+      "p_doc_correcto_medio": 0.0026
+    },
+    {
+      "rango_unidades": "51-150",
+      "n": 119,
+      "recall_1_pct": 97.5,
+      "recall_3_pct": 99.2,
+      "p_doc_correcto_medio": 0.0032
+    },
+    {
+      "rango_unidades": "151-400",
+      "n": 120,
+      "recall_1_pct": 99.2,
+      "recall_3_pct": 100.0,
+      "p_doc_correcto_medio": 0.0046
+    },
+    {
+      "rango_unidades": "401-+",
+      "n": 115,
+      "recall_1_pct": 99.1,
+      "recall_3_pct": 100.0,
+      "p_doc_correcto_medio": 0.0055
+    }
+  ],
+  "E_estabilidad_parafrasis": {
+    "n": 89,
+    "mismo_top1_en_3_ventanas_pct": 92.1,
+    "ejemplos_inestables": [
+      {
+        "doc": "clase-s2-1-transiciones-demograficas-2026-1",
+        "tops": [
+          "clase-s2-1-transiciones-demograficas-2026-1",
+          "aramburu-mendoza-2015-futuro-poblacion-peruana",
+          "clase-s2-1-transiciones-demograficas-2026-1"
+        ]
+      },
+      {
+        "doc": "hcp-seminario-lecturas-2026-1-guion-alumnos",
+        "tops": [
+          "hcp-seminario-lecturas-2026-1-guion-alumnos",
+          "hcp-seminario-lecturas-2026-1-guion-alumnos",
+          "cronograma-hcp-2026-1-a"
+        ]
+      },
+      {
+        "doc": "historia-critica-del-peru-122005-a-2026-01-pre",
+        "tops": [
+          "historia-critica-del-peru-122005-a-2026-01-pre",
+          "cronograma-hcp-2026-1-a",
+          "historia-critica-del-peru-122005-a-2026-01-pre"
+        ]
+      },
+      {
+        "doc": "clase-s2-1-transiciones-demograficas-2026-1",
+        "tops": [
+          "clase-s2-1-transiciones-demograficas-2026-1",
+          "contreras-2020-crisisdemografica-sigloxvi",
+          "clase-s2-1-transiciones-demograficas-2026-1"
+        ]
+      },
+      {
+        "doc": "aldana-pereyra-2022-regiones-vivas-y-activas",
+        "tops": [
+          "aldana-pereyra-2022-regiones-vivas-y-activas",
+          "clase-semana4-1-2026-1",
+          "aldana-pereyra-2022-regiones-vivas-y-activas"
+        ]
+      }
+    ]
+  },
+  "F_eficiencia": {
+    "curva": [
+      {
+        "palabras_consulta": 1,
+        "lat_p50_ms": 99.3,
+        "lat_p95_ms": 794.0
+      },
+      {
+        "palabras_consulta": 3,
+        "lat_p50_ms": 119.3,
+        "lat_p95_ms": 837.7
+      },
+      {
+        "palabras_consulta": 10,
+        "lat_p50_ms": 148.4,
+        "lat_p95_ms": 361.5
+      },
+      {
+        "palabras_consulta": 30,
+        "lat_p50_ms": 492.1,
+        "lat_p95_ms": 718.5
+      },
+      {
+        "palabras_consulta": 100,
+        "lat_p50_ms": 953.5,
+        "lat_p95_ms": 1244.5
+      },
+      {
+        "palabras_consulta": 300,
+        "lat_p50_ms": 1437.1,
+        "lat_p95_ms": 1887.9
+      }
+    ],
+    "lat_global_p50_ms": 147.8,
+    "lat_global_p95_ms": 397.8
+  },
+  "G_calibracion": {
+    "p_doc_top1_medio_en_aciertos": 0.0042,
+    "p_doc_top1_medio_en_fallos": 0.0673,
+    "separacion": 0.0631,
+    "saturados_en_1.0_pct": 0.0,
+    "_lectura": "p_doc BAJO deberia indicar acierto. Si la separacion es ~0 o negativa, la calibracion NO discrimina."
+  }
+}

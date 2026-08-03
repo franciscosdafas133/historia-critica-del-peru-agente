@@ -1,0 +1,753 @@
+{
+  "escenario": "spike",
+  "url": "https://historia-critica-del-peru-agente.onrender.com/api/preguntar",
+  "inicio": "2026-08-03 10:23:34",
+  "niveles": [
+    {
+      "etiqueta": "spike-2vus",
+      "vus": 2,
+      "duracion_s": 32.200881481170654,
+      "requests": 24,
+      "rps": 0.75,
+      "ok": 24,
+      "error_rate_pct": 0.0,
+      "timeouts": 0,
+      "corruptas": 0,
+      "p50_ms": 2613.2,
+      "p90_ms": 3881.9,
+      "p95_ms": 4024.4,
+      "p99_ms": 5069.2,
+      "max_ms": 5069.2,
+      "ms_recuperacion_p95": 1728.8,
+      "canarias_bajo_carga": {
+        "n": 5,
+        "top5_stability_pct": 100.0,
+        "cambios": []
+      }
+    },
+    {
+      "etiqueta": "spike-15vus",
+      "vus": 15,
+      "duracion_s": 59.15676236152649,
+      "requests": 55,
+      "rps": 0.93,
+      "ok": 55,
+      "error_rate_pct": 0.0,
+      "timeouts": 0,
+      "corruptas": 0,
+      "p50_ms": 15702.0,
+      "p90_ms": 16655.5,
+      "p95_ms": 17195.3,
+      "p99_ms": 19291.0,
+      "max_ms": 19291.0,
+      "ms_recuperacion_p95": 1807.1,
+      "canarias_bajo_carga": {
+        "n": 5,
+        "top5_stability_pct": 100.0,
+        "cambios": []
+      }
+    }
+  ],
+  "canarias_baseline": [
+    {
+      "query_id": "Q001",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2648.1,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null
+      ],
+      "hash_textos": [
+        5422702651929707799
+      ],
+      "n_paquetes": 1,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q006",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2461.2,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -6342159250030969820,
+        5775982797193000321,
+        7223751759203469833,
+        4628821543879711253
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q016",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2218.0,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -6108259426500156727,
+        -2379777151217359630,
+        -7109231864767230263,
+        -8503813085884060167
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q026",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2286.8,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null
+      ],
+      "hash_textos": [
+        1618895651311028758,
+        3260053091981566735
+      ],
+      "n_paquetes": 2,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q031",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2309.2,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null
+      ],
+      "hash_textos": [
+        -6342159250030969820,
+        5077475907877046367
+      ],
+      "n_paquetes": 2,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q046",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2293.6,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 2\\Aramburú_Mendoza_2015_Futuro_población_peruana.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -1276111380130720893,
+        4037963754221494718,
+        -4287391098019230562,
+        5467282686763267603,
+        2588925071415659944,
+        6648179717709386848
+      ],
+      "n_paquetes": 6,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q051",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2293.2,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 13\\Cahill_1993_Independencia_sociedad_fiscalidad.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 2\\Aramburú_Mendoza_2015_Futuro_población_peruana.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        4256090422335559433,
+        1315274009839910602,
+        -4433163716388697929,
+        168962290097895488
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q061",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2182.6,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 13\\Cahill_1993_Independencia_sociedad_fiscalidad.pdf"
+      ],
+      "unidades": [
+        null,
+        null
+      ],
+      "hash_textos": [
+        -1620381370955757957,
+        8719771195961323893
+      ],
+      "n_paquetes": 2,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q066",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2137.0,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 14\\Renique_2022_Nación_Radical_cap.4.pdf",
+        "Cronograma_HCP_2026_1_A.pdf",
+        "Cronograma_HCP_2026_1_A.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -7702394329594941180,
+        -5749028985677249928,
+        -6653714903967815947
+      ],
+      "n_paquetes": 3,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q071",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2269.2,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 2\\Aramburú_Mendoza_2015_Futuro_población_peruana.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -1620381370955757957,
+        4140637447586722212,
+        3804300100119329168,
+        -2203816316805691634,
+        -1221436122907612172
+      ],
+      "n_paquetes": 5,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q086",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 1197.7,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 4\\Marzal_Ludeña_2017_Ciudadesintermedias.pdf",
+        "Trabajos calificados\\Ejercicio Calificado 2.pdf"
+      ],
+      "unidades": [
+        null,
+        null
+      ],
+      "hash_textos": [
+        -2199684550611437642,
+        -8984706959683136829
+      ],
+      "n_paquetes": 2,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q091",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2434.9,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -6609983989645487148,
+        2170945748795489689,
+        -608119567525629723,
+        5958923902942479140
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q096",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2259.6,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Cronograma_HCP_2026_1_A.pdf",
+        "Cronograma_HCP_2026_1_A.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        6344658677715427876,
+        -8499994908751278054,
+        -1793719458606299443,
+        -626509724126943462
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q111",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2202.9,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 2\\Aramburú_Mendoza_2015_Futuro_población_peruana.pdf"
+      ],
+      "unidades": [
+        null
+      ],
+      "hash_textos": [
+        -57117104097915494
+      ],
+      "n_paquetes": 1,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q116",
+      "etiqueta": "baseline",
+      "status": 200,
+      "ms": 2293.8,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\moneda-190-07.pdf"
+      ],
+      "unidades": [
+        null
+      ],
+      "hash_textos": [
+        6633344131777165858
+      ],
+      "n_paquetes": 1,
+      "corrupta": false
+    }
+  ],
+  "baseline_p50_ms": 2286.8,
+  "canarias_post": [
+    {
+      "query_id": "Q001",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2353.4,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null
+      ],
+      "hash_textos": [
+        5422702651929707799
+      ],
+      "n_paquetes": 1,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q006",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2454.2,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -6342159250030969820,
+        5775982797193000321,
+        7223751759203469833,
+        4628821543879711253
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q016",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2351.8,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -6108259426500156727,
+        -2379777151217359630,
+        -7109231864767230263,
+        -8503813085884060167
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q026",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2243.9,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null
+      ],
+      "hash_textos": [
+        1618895651311028758,
+        3260053091981566735
+      ],
+      "n_paquetes": 2,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q031",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2290.2,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null
+      ],
+      "hash_textos": [
+        -6342159250030969820,
+        5077475907877046367
+      ],
+      "n_paquetes": 2,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q046",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2090.5,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 2\\Aramburú_Mendoza_2015_Futuro_población_peruana.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -1276111380130720893,
+        4037963754221494718,
+        -4287391098019230562,
+        5467282686763267603,
+        2588925071415659944,
+        6648179717709386848
+      ],
+      "n_paquetes": 6,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q051",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2002.4,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 13\\Cahill_1993_Independencia_sociedad_fiscalidad.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 2\\Aramburú_Mendoza_2015_Futuro_población_peruana.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        4256090422335559433,
+        1315274009839910602,
+        -4433163716388697929,
+        168962290097895488
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q061",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2324.3,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 13\\Cahill_1993_Independencia_sociedad_fiscalidad.pdf"
+      ],
+      "unidades": [
+        null,
+        null
+      ],
+      "hash_textos": [
+        -1620381370955757957,
+        8719771195961323893
+      ],
+      "n_paquetes": 2,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q066",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 1964.7,
+      "docs": [
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 14\\Renique_2022_Nación_Radical_cap.4.pdf",
+        "Cronograma_HCP_2026_1_A.pdf",
+        "Cronograma_HCP_2026_1_A.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -7702394329594941180,
+        -5749028985677249928,
+        -6653714903967815947
+      ],
+      "n_paquetes": 3,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q071",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2204.5,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 2\\Aramburú_Mendoza_2015_Futuro_población_peruana.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -1620381370955757957,
+        4140637447586722212,
+        3804300100119329168,
+        -2203816316805691634,
+        -1221436122907612172
+      ],
+      "n_paquetes": 5,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q086",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 1301.0,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 4\\Marzal_Ludeña_2017_Ciudadesintermedias.pdf",
+        "Trabajos calificados\\Ejercicio Calificado 2.pdf"
+      ],
+      "unidades": [
+        null,
+        null
+      ],
+      "hash_textos": [
+        -2199684550611437642,
+        -8984706959683136829
+      ],
+      "n_paquetes": 2,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q091",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2357.6,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 2. Procesos socioeconómicos y recursos naturales en los espacios regionales\\Semana 10\\Aldana_Pereyra_2022_Regiones vivas y activas.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        -6609983989645487148,
+        2170945748795489689,
+        -608119567525629723,
+        5958923902942479140
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q096",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2137.5,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Aramburú_2012_Poblacióndiferente_pags-55-72.pdf",
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\Amat_y_León_2012_Perúnuestrodecadadía.pdf",
+        "Cronograma_HCP_2026_1_A.pdf",
+        "Cronograma_HCP_2026_1_A.pdf"
+      ],
+      "unidades": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "hash_textos": [
+        6344658677715427876,
+        -8499994908751278054,
+        -1793719458606299443,
+        -626509724126943462
+      ],
+      "n_paquetes": 4,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q111",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 2289.9,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 2\\Aramburú_Mendoza_2015_Futuro_población_peruana.pdf"
+      ],
+      "unidades": [
+        null
+      ],
+      "hash_textos": [
+        -57117104097915494
+      ],
+      "n_paquetes": 1,
+      "corrupta": false
+    },
+    {
+      "query_id": "Q116",
+      "etiqueta": "post",
+      "status": 200,
+      "ms": 1909.6,
+      "docs": [
+        "Unidad 1. Demografía, territorio y medioambiente en el Perú\\Semana 1\\Clase 1. Introducción, demografía\\moneda-190-07.pdf"
+      ],
+      "unidades": [
+        null
+      ],
+      "hash_textos": [
+        6633344131777165858
+      ],
+      "n_paquetes": 1,
+      "corrupta": false
+    }
+  ],
+  "comparacion_post": {
+    "n": 15,
+    "top5_stability_pct": 100.0,
+    "cambios": []
+  },
+  "primer_punto_degradacion": "p95 17195.3ms > 3.0x baseline (2287ms) en 15 VUs",
+  "total_requests": 119
+}
