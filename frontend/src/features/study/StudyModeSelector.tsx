@@ -9,8 +9,21 @@ interface ModeConfig {
   icon: LucideIcon
 }
 
+// Solo "Entender" esta habilitado mientras se evalua el metodo de
+// recuperacion FORMA-IR: se prueba un unico modo a la vez para que
+// cualquier resultado sea atribuible a la recuperacion y no a las
+// diferencias de prompt entre modos. Los demas modos siguen
+// implementados (features/study/modes/*.tsx) -- para reactivarlos basta
+// devolver sus entradas a esta lista.
+//
+// Pendiente conocido en el modo Resolver: la retroalimentacion llega con
+// caracteres corruptos ("ÂÂÂ...", UTF-8 interpretado como Latin-1). Debe
+// arreglarse antes de rehabilitarlo.
 export const STUDY_MODES: ModeConfig[] = [
   { id: 'understand', label: 'Entender', description: 'Explicación guiada con evidencias', icon: Lightbulb },
+]
+
+export const STUDY_MODES_DESHABILITADOS: ModeConfig[] = [
   { id: 'solve', label: 'Resolver', description: 'Analiza una fuente paso a paso', icon: Compass },
   { id: 'practice', label: 'Practicar', description: 'Responde y recibe retroalimentación', icon: Dumbbell },
   { id: 'assess', label: 'Evaluarme', description: 'Microevaluación de 3 preguntas', icon: ClipboardCheck },

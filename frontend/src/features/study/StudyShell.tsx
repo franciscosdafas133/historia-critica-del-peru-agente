@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import { StudyLeftPanel } from './StudyLeftPanel'
-import { StudyModeSelector } from './StudyModeSelector'
+import { StudyModeSelector, STUDY_MODES } from './StudyModeSelector'
 import { EvidenceSidebar } from './EvidenceSidebar'
 import { EvidenceFloatingButton } from './EvidenceFloatingButton'
 import { UnderstandMode } from './modes/UnderstandMode'
@@ -38,7 +38,13 @@ export function StudyShell({ course }: StudyShellProps) {
   // una única semana en la estructura actual del curso, así que no hace
   // falta un segundo estado independiente que pudiera desincronizarse.
   const currentWeekId = allWeeks.find((w) => w.topics.some((t) => t.id === currentTopic?.id))?.id ?? firstWeek?.id ?? ''
-  const [activeMode, setActiveMode] = useState<StudyMode>(() => progressService.getLastMode() ?? 'understand')
+  // El modo guardado en el navegador puede ser uno ya deshabilitado (ver
+  // STUDY_MODES): en ese caso se cae a 'understand', para no dejar la
+  // interfaz en un modo sin pestaña visible que el usuario no puede cambiar.
+  const [activeMode, setActiveMode] = useState<StudyMode>(() => {
+    const guardado = progressService.getLastMode()
+    return guardado && STUDY_MODES.some((m) => m.id === guardado) ? guardado : 'understand'
+  })
   const [collapsed, setCollapsed] = useState(false)
   const [evidence, setEvidence] = useState<Evidence[]>([])
   const [previewEvidence, setPreviewEvidence] = useState<Evidence | null>(null)
