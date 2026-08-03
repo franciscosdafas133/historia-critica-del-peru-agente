@@ -1,4 +1,4 @@
-import { Lightbulb, Compass, Dumbbell, ClipboardCheck, RotateCcw, Swords } from 'lucide-react'
+import { Lightbulb } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { StudyMode } from '@/types/study'
 
@@ -21,14 +21,6 @@ interface ModeConfig {
 // arreglarse antes de rehabilitarlo.
 export const STUDY_MODES: ModeConfig[] = [
   { id: 'understand', label: 'Entender', description: 'Explicación guiada con evidencias', icon: Lightbulb },
-]
-
-export const STUDY_MODES_DESHABILITADOS: ModeConfig[] = [
-  { id: 'solve', label: 'Resolver', description: 'Analiza una fuente paso a paso', icon: Compass },
-  { id: 'practice', label: 'Practicar', description: 'Responde y recibe retroalimentación', icon: Dumbbell },
-  { id: 'assess', label: 'Evaluarme', description: 'Microevaluación de 3 preguntas', icon: ClipboardCheck },
-  { id: 'review', label: 'Repasar', description: 'Tarjetas de repaso rápido', icon: RotateCcw },
-  { id: 'debate', label: 'Debatir', description: 'Confronta tu tesis con la evidencia', icon: Swords },
 ]
 
 interface StudyModeSelectorProps {

@@ -52,6 +52,7 @@ const ERROR_GENERICO = 'Hubo un problema generando la respuesta. Inténtalo de n
  * común en el tier gratuito y merece un mensaje específico. */
 function friendlyError(raw: string): string {
   if (/RESOURCE_EXHAUSTED|429|quota/i.test(raw)) return CUOTA_AGOTADA
+  if (/413|rate_limit_exceeded|tokens per minute|too large/i.test(raw)) return CUOTA_AGOTADA
   return ERROR_GENERICO
 }
 

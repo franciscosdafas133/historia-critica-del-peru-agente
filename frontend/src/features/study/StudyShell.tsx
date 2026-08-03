@@ -6,11 +6,6 @@ import { StudyModeSelector, STUDY_MODES } from './StudyModeSelector'
 import { EvidenceSidebar } from './EvidenceSidebar'
 import { EvidenceFloatingButton } from './EvidenceFloatingButton'
 import { UnderstandMode } from './modes/UnderstandMode'
-import { SolveMode } from './modes/SolveMode'
-import { PracticeMode } from './modes/PracticeMode'
-import { AssessMode } from './modes/AssessMode'
-import { ReviewMode } from './modes/ReviewMode'
-import { DebateMode } from './modes/DebateMode'
 import { Drawer } from '@/components/ui/Drawer'
 import { EvidencePanel } from '@/features/evidence/EvidencePanel'
 import { SourcePreviewModal } from '@/features/evidence/SourcePreviewModal'
@@ -81,21 +76,12 @@ export function StudyShell({ course }: StudyShellProps) {
     setProgress(progressService.getProgress())
   }
 
-  const modeContent = {
-    understand: <UnderstandMode topicId={currentTopic?.id ?? null} onEvidenceUpdate={setEvidence} onActivity={handleActivity} />,
-    solve: <SolveMode topicId={currentTopic?.id ?? null} onActivity={handleActivity} />,
-    practice: <PracticeMode topicId={currentTopic?.id ?? null} onEvidenceUpdate={setEvidence} onActivity={handleActivity} />,
-    assess: <AssessMode courseId={course.id} onActivity={handleActivity} />,
-    review: <ReviewMode topicId={currentTopic?.id ?? null} onActivity={handleActivity} />,
-    debate: (
-      <DebateMode
-        topicId={currentTopic?.id ?? null}
-        onEvidenceUpdate={setEvidence}
-        onActivity={handleActivity}
-        onViewSource={setPreviewEvidence}
-      />
-    ),
-  }[activeMode]
+  // Solo "Entender" esta activo mientras se evalua el metodo de recuperacion
+  // FORMA-IR: un unico modo hace que cualquier resultado sea atribuible a la
+  // recuperacion y no a las diferencias de prompt entre modos. Los demas modos
+  // siguen implementados en ./modes/*.tsx; para reactivarlos hay que volver a
+  // importarlos aqui y devolver su entrada a STUDY_MODES.
+  const modeContent = <UnderstandMode topicId={currentTopic?.id ?? null} onEvidenceUpdate={setEvidence} onActivity={handleActivity} />
 
   return (
     <div className="flex h-screen overflow-hidden bg-surface-100">
