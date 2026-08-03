@@ -25,7 +25,13 @@ ANTHROPIC_API_KEY.
 import sys, io, os, json, pickle, argparse, re
 
 import tiktoken
-from recuperar import recuperar, analizar_pregunta
+# Metodo de recuperacion: FORMA-IR (forma_ir_recuperar.py) reemplaza al
+# metodo lexico anterior (recuperar.py), decision explicita tomada tras
+# revisar el hallazgo de la evaluacion de Fase I sobre las 57 preguntas
+# reales del curso -- ver forma_ir_recuperar.py para el detalle y el
+# riesgo documentado. recuperar.py se conserva intacto en el repo por si
+# hace falta revertir (ver git log de este archivo).
+from forma_ir_recuperar import recuperar, analizar_pregunta
 
 RAIZ = os.path.dirname(os.path.abspath(__file__))
 IDX = os.path.join(RAIZ, "corpus", "indice.pkl")

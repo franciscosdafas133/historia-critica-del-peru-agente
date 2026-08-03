@@ -1,0 +1,20 @@
+[
+ {
+  "etiqueta": "soak_misma_pregunta",
+  "n_usuarios": 10,
+  "preguntas_por_usuario": 20,
+  "n_requests": 200,
+  "t_total_s": 8.667,
+  "requests_por_segundo": 23.07,
+  "latencia_p50_s": 0.4095,
+  "latencia_p95_s": 0.6612,
+  "latencia_p99_s": 0.779,
+  "latencia_max_s": 0.795,
+  "n_errores": 0,
+  "errores": [],
+  "mem_antes_mb": 177.7,
+  "mem_despues_mb": 181.4,
+  "mem_crecimiento_mb": 3.7,
+  "cpu_percent_durante": 0.0
+ }
+]

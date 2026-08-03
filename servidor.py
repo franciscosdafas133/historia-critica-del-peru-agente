@@ -27,7 +27,10 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
 
-from recuperar import recuperar, analizar_pregunta
+# Mismo metodo que agente.py: FORMA-IR reemplaza al metodo lexico
+# anterior (recuperar.py) -- ver forma_ir_recuperar.py y la nota de
+# import en agente.py para el detalle y el riesgo documentado.
+from forma_ir_recuperar import recuperar, analizar_pregunta
 from agente import (SISTEMA, sistema_para, MODOS, prompt_recuperacion,
                     prompt_completo, verificar_citas, ntok,
                     parsear_practica, parsear_tarjeta)
