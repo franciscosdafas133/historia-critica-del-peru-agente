@@ -190,21 +190,64 @@ def _texto_ancestro(unidad: UnidadRetenida, bloques_doc: list[Bloque],
     return ""
 
 
+def precomputar_unidad(unidad: UnidadRetenida, bloques_doc: list[Bloque],
+                         firmas_doc: list[FirmaForma]) -> dict:
+    """Precalcula, UNA sola vez por unidad (en tiempo de indexacion),
+    todo lo que calcular_vector_evidencia necesita y que NO depende de
+    la consulta: tokens del cuerpo, tokens de la ruta ancestral, y los
+    conjuntos de tokens de los bloques-ancla de la unidad.
+
+    Optimizacion critica encontrada en produccion: sin esto, cada
+    consulta re-tokenizaba el texto de las ~2,900 unidades del corpus y
+    re-escaneaba el documento entero hacia atras buscando el ancestro de
+    cada unidad (_texto_ancestro es O(bloques_del_documento) por unidad
+    -- en el documento mas grande, ~6,million de operaciones por consulta
+    solo en ancestros). Todo eso es invariante entre consultas."""
+    tokens_cuerpo = tokenizar(unidad.texto)
+    tokens_ancestro = tokenizar(_texto_ancestro(unidad, bloques_doc, firmas_doc))
+    anclas_tokens = []
+    for i in unidad.indices_bloque:
+        if _es_bloque_ancla(bloques_doc[i], firmas_doc[i]):
+            anclas_tokens.append(set(tokenizar(bloques_doc[i].texto)))
+    return {
+        "tokens_cuerpo": tokens_cuerpo,
+        "set_cuerpo": set(tokens_cuerpo),
+        "tokens_ancestro": tokens_ancestro,
+        "anclas_tokens": anclas_tokens,
+    }
+
+
 def calcular_vector_evidencia(query: str, unidad: UnidadRetenida, bloques_doc: list[Bloque],
                                 firmas_doc: list[FirmaForma], idf: dict[str, float],
-                                longitud_promedio_unidad: float) -> VectorEvidencia:
+                                longitud_promedio_unidad: float,
+                                precomputado: dict | None = None) -> VectorEvidencia:
+    """`precomputado` (opcional): salida de precomputar_unidad() para esta
+    unidad -- evita re-tokenizar y re-escanear ancestros en cada consulta
+    (ver docstring de precomputar_unidad). Sin el, el calculo es identico
+    pero mas lento (compatibilidad con los llamadores/tests existentes)."""
     tokens_query = tokenizar(query)
-    tokens_cuerpo = tokenizar(unidad.texto)
-    texto_ancestro = _texto_ancestro(unidad, bloques_doc, firmas_doc)
-    tokens_ancestro = tokenizar(texto_ancestro)
 
-    bloques_unidad = [bloques_doc[i] for i in unidad.indices_bloque]
-    firmas_unidad = [firmas_doc[i] for i in unidad.indices_bloque]
+    if precomputado is not None:
+        tokens_cuerpo = precomputado["tokens_cuerpo"]
+        set_cuerpo = precomputado["set_cuerpo"]
+        tokens_ancestro = precomputado["tokens_ancestro"]
+        anclas_tokens = precomputado["anclas_tokens"]
+    else:
+        tokens_cuerpo = tokenizar(unidad.texto)
+        set_cuerpo = set(tokens_cuerpo)
+        tokens_ancestro = tokenizar(_texto_ancestro(unidad, bloques_doc, firmas_doc))
+        anclas_tokens = [
+            set(tokenizar(bloques_doc[i].texto))
+            for i in unidad.indices_bloque
+            if _es_bloque_ancla(bloques_doc[i], firmas_doc[i])
+        ]
 
     b = _bm25f(tokens_query, tokens_cuerpo, tokens_ancestro, idf, longitud_promedio_unidad)
-    c = _cobertura_idf(tokens_query, set(tokens_cuerpo), idf)
+    c = _cobertura_idf(tokens_query, set_cuerpo, idf)
     ventana = _ventana_mas_corta(tokens_query, tokens_cuerpo)
     x = _compacidad(c, ventana)
-    a = _evidencia_ancla(tokens_query, bloques_unidad, firmas_unidad)
+
+    terminos_query = set(tokens_query)
+    a = 1.0 if terminos_query and any(terminos_query & at for at in anclas_tokens) else 0.0
 
     return VectorEvidencia(unidad_id=unidad.unidad_id, b=b, c=c, x=x, a=a)

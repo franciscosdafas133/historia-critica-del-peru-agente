@@ -74,12 +74,34 @@ class ReservorioNulo:
     def hash_estado(self) -> str:
         """Hash determinista del contenido de R_c+C_c -- usado para
         verificar que una tanda de consultas de test NO modifico el
-        reservorio (ver `verificar_aislamiento_reservorio`)."""
+        reservorio (ver `verificar_aislamiento_reservorio`).
+        El cache derivado `_t_calibracion_cache` NO participa del hash:
+        es un valor derivado deterministicamente de referencia+calibracion,
+        no estado nuevo -- cachearlo no altera el aislamiento."""
         payload = json.dumps(
             {"familia_id": self.familia_id, "referencia": self.referencia, "calibracion": self.calibracion},
             sort_keys=True,
         )
         return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+    def t_calibracion(self) -> list[float]:
+        """T_c de cada vector de la mitad de calibracion, contra R_c.
+        Es INDEPENDIENTE de la consulta (solo depende de R_c/C_c, que
+        estan congelados), asi que se calcula una sola vez y se cachea.
+
+        Optimizacion critica encontrada en produccion: la version
+        original recalculaba esta lista DENTRO de p_valor_calibrado en
+        cada llamada -- |C_c| x |R_c| x 4 coordenadas ~ 40,000
+        comparaciones POR UNIDAD evaluada, para un valor que nunca
+        cambia. Con ~1,000 unidades candidatas por consulta eso eran
+        ~40 millones de operaciones redundantes por pregunta -- la causa
+        principal de que una consulta tardara 30-90s en el servidor de
+        produccion (timeout de gunicorn: 90s; preguntas amplias morian)."""
+        cache = getattr(self, "_t_calibracion_cache", None)
+        if cache is None:
+            cache = [estadistica_cuello_de_botella(b, self.referencia) for b in self.calibracion]
+            object.__setattr__(self, "_t_calibracion_cache", cache)
+        return cache
 
 
 def _quantil_idf(tokens_query: list[str], idf: dict[str, float]) -> float:
@@ -247,7 +269,9 @@ def p_valor_calibrado(vector_evidencia: VectorEvidencia, reservorio: ReservorioN
     vector = (vector_evidencia.b, vector_evidencia.c, vector_evidencia.x, vector_evidencia.a)
     t_candidata = estadistica_cuello_de_botella(vector, reservorio.referencia)
 
-    t_calibracion = [estadistica_cuello_de_botella(b, reservorio.referencia) for b in reservorio.calibracion]
+    # T_c de la calibracion es constante por reservorio -- cacheado (ver
+    # ReservorioNulo.t_calibracion para la historia de la optimizacion).
+    t_calibracion = reservorio.t_calibracion()
     conteo = sum(1 for t in t_calibracion if t >= t_candidata)
     return (1 + conteo) / (len(reservorio.calibracion) + 1)
 

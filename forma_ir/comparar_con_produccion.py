@@ -26,7 +26,8 @@ from collections import defaultdict
 from forma_ir.calibracion import construir_reservorios_por_familia, p_valor_calibrado
 from forma_ir.documento import agregar_documentos, rankear_unidades_de_documento
 from forma_ir.empaquetado import empaquetar_por_cobertura_submodular
-from forma_ir.evidencia import VectorEvidencia, calcular_idf, calcular_vector_evidencia, tokenizar
+from forma_ir.evidencia import (VectorEvidencia, calcular_idf, calcular_vector_evidencia,
+                                  precomputar_unidad, tokenizar)
 from forma_ir.firma import secuencia_de_firmas
 from forma_ir.tipos import Bloque, UnidadRetenida
 
@@ -71,9 +72,10 @@ def _cargar_corpus_segmentado():
 
 def preparar_indice():
     """Construye una sola vez todo lo que el pipeline de consulta
-    necesita: IDF global, reservorios de nulo por familia. Costoso
-    (construccion de reservorios ~1-2s), se hace UNA vez por proceso,
-    no por consulta."""
+    necesita: IDF global, reservorios de nulo por familia, precomputados
+    por unidad (tokens/ancestros/anclas, ver evidencia.precomputar_unidad)
+    y un indice invertido termino -> unidades para pre-filtrar candidatas.
+    Costoso (~segundos), se hace UNA vez por proceso, no por consulta."""
     bloques_por_doc, firmas_por_doc, unidades_por_familia, todas_las_unidades, unidades_por_doc = _cargar_corpus_segmentado()
 
     idf = calcular_idf([tokenizar(b.texto) for bloques in bloques_por_doc.values() for b in bloques])
@@ -84,6 +86,25 @@ def preparar_indice():
         dict(unidades_por_familia), todas_las_unidades, bloques_por_doc, firmas_por_doc, idf, longitud_promedio
     )
 
+    # Pre-calienta el cache de T_c de calibracion de cada reservorio
+    # (independiente de la consulta) para que ni siquiera la primera
+    # pregunta pague ese costo.
+    for r in reservorios.values():
+        r.t_calibracion()
+
+    # Precomputados por unidad + indice invertido termino -> unidad_ids.
+    precomputados: dict[str, dict] = {}
+    indice_invertido: dict[str, set] = defaultdict(set)
+    for u in todas_las_unidades:
+        bloques_doc = bloques_por_doc.get(u.doc_id)
+        firmas_doc = firmas_por_doc.get(u.doc_id)
+        if not bloques_doc:
+            continue
+        pc = precomputar_unidad(u, bloques_doc, firmas_doc)
+        precomputados[u.unidad_id] = pc
+        for t in pc["set_cuerpo"]:
+            indice_invertido[t].add(u.unidad_id)
+
     return {
         "bloques_por_doc": bloques_por_doc,
         "firmas_por_doc": firmas_por_doc,
@@ -92,6 +113,8 @@ def preparar_indice():
         "idf": idf,
         "longitud_promedio": longitud_promedio,
         "reservorios": reservorios,
+        "precomputados": precomputados,
+        "indice_invertido": dict(indice_invertido),
     }
 
 
@@ -108,6 +131,29 @@ def responder_consulta(query: str, indice: dict, presupuesto_tokens: int = 2048,
     bloques_por_doc = indice["bloques_por_doc"]
     firmas_por_doc = indice["firmas_por_doc"]
 
+    # Pre-filtro por indice invertido: solo se evaluan unidades cuyo
+    # CUERPO comparte al menos un termino con la consulta. Una unidad
+    # sin terminos compartidos en el cuerpo produce c=x=a=0 con certeza;
+    # el unico caso borde que el pre-filtro descarta y el barrido
+    # completo no es una unidad cuyo ANCESTRO (no el cuerpo) contiene un
+    # termino de la consulta -- esa unidad tendria un b marginal >0 pero
+    # c=x=a=0, y con la estadistica de cuello de botella (minimo de
+    # rangos) nunca alcanza un p-valor competitivo, asi que excluirla no
+    # cambia el ranking en la practica. Encontrado en produccion: el
+    # barrido completo de ~2,900 unidades por consulta tomaba 30-90s en
+    # el CPU del hosting (timeout de gunicorn: 90s -- preguntas amplias
+    # directamente morian y el frontend quedaba girando para siempre).
+    indice_invertido = indice.get("indice_invertido", {})
+    precomputados = indice.get("precomputados", {})
+    tokens_query = tokenizar(query)
+    if indice_invertido:
+        candidatas_ids: set = set()
+        for t in set(tokens_query):
+            candidatas_ids |= indice_invertido.get(t, set())
+        unidades_a_evaluar = [u for u in indice["todas_las_unidades"] if u.unidad_id in candidatas_ids]
+    else:
+        unidades_a_evaluar = indice["todas_las_unidades"]  # compatibilidad con indices sin pre-filtro
+
     # E + F: vector de evidencia y p-valor calibrado, SOLO para unidades
     # cuya familia tiene reservorio (familias sin muestra suficiente,
     # ver Fase F, quedan fuera del ranking calibrado -- limitacion
@@ -120,7 +166,7 @@ def responder_consulta(query: str, indice: dict, presupuesto_tokens: int = 2048,
     # clasifica soporte "direct" solo cuando cobertura>0.6, asi que
     # ninguna evidencia se mostraba nunca como respaldo fuerte).
     vectores_por_unidad: dict[str, VectorEvidencia] = {}
-    for u in indice["todas_las_unidades"]:
+    for u in unidades_a_evaluar:
         reservorio = reservorios.get(u.familia_id)
         if reservorio is None:
             continue
@@ -128,7 +174,8 @@ def responder_consulta(query: str, indice: dict, presupuesto_tokens: int = 2048,
         firmas_doc = firmas_por_doc.get(u.doc_id)
         if not bloques_doc:
             continue
-        vector = calcular_vector_evidencia(query, u, bloques_doc, firmas_doc, idf, longitud_promedio)
+        vector = calcular_vector_evidencia(query, u, bloques_doc, firmas_doc, idf, longitud_promedio,
+                                             precomputado=precomputados.get(u.unidad_id))
         # Solo se calibra si hay ALGUNA evidencia lexica real -- evita
         # gastar tiempo calibrando ruido puro (b=c=x=a=0).
         if vector.b == 0.0 and vector.c == 0.0 and vector.a == 0.0:
