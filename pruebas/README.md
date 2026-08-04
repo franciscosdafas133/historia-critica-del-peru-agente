@@ -20,6 +20,20 @@ python pruebas/evaluar_motor.py --json resultado.json
 | `[3b] adversarial` | ¿se rompe con entradas hostiles o malformadas? |
 | `[4] ablacion` | ¿qué señal de la frontera híbrida se gana su coste? |
 
+## Los otros scripts
+
+```
+python pruebas/verificar_produccion.py     # ¿qué versión está desplegada?
+python pruebas/evaluar_entender.py         # el modo Entender con la API real
+python pruebas/anotar_oro.py --candidatos  # banco de bloques de oro (§8.3)
+python pruebas/calibrar_semantico.py       # umbrales de la señal semántica
+```
+
+`verificar_produccion.py` existe porque el despliegue ha fallado en silencio
+dos veces: Render sirvió un commit viejo más de un día mientras la API
+respondía 200 con normalidad. Comprueba **qué versión** está arriba, no solo
+si responde.
+
 ## Resultados medidos (2026-08-04)
 
 Banco: 49 preguntas del temario + 28 ajenas = 77.

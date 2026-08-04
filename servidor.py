@@ -75,6 +75,7 @@ def api_info():
     idx = cargar_indice()
     docs = idx["docs"]
     prov, modelo = proveedor_activo()
+    import semantico
     return jsonify({
         "curso": idx["curso"],
         "documentos": len(docs),
@@ -84,6 +85,11 @@ def api_info():
         "api_disponible": prov is not None,
         "proveedor": prov,
         "modelo": modelo,
+        # Permite comprobar desde fuera si la senal semantica esta activa en
+        # un despliegue. Sin esto, la degradacion a solo-lexico (falta el
+        # indice o la clave de embeddings) es invisible: el motor responde
+        # igual, solo que peor.
+        "semantico": semantico.disponible(),
     })
 
 

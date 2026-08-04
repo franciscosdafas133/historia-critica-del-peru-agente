@@ -67,7 +67,23 @@ export function UnderstandMode({ topicId, onEvidenceUpdate, onActivity }: Unders
         </div>
       )}
 
-      {response && !isLoading && (
+      {response && !isLoading && response.outOfScope && (
+        <div className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-5">
+          <HelpCircle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden="true" />
+          <div>
+            <p className="mb-1 text-sm font-semibold text-amber-900">
+              Fuera del material del curso
+            </p>
+            <p className="text-sm leading-relaxed text-amber-800">{response.rawText}</p>
+            <p className="mt-2 text-xs text-amber-700">
+              El tutor solo responde con las lecturas, diapositivas y documentos
+              autorizados de este curso. Prueba con un tema del sílabo.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {response && !isLoading && !response.outOfScope && (
         <div className="space-y-4 rounded-xl border border-surface-200 bg-surface-50 p-5">
           <ConfidenceBadge confidence={response.confidence} />
 

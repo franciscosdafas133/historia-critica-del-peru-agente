@@ -10,7 +10,12 @@ secrets.json
 # de la ingesta se excluye por no ser necesario para servir.
 corpus/*
 !corpus/indice.pkl
+!corpus/embeddings.npz
 !corpus/.gitkeep
+
+# Parcial de la construccion de embeddings: solo sirve para reanudar el
+# script si se corta a mitad. No debe viajar al repo.
+corpus/_embeddings_parcial.npy
 
 # Material del curso original — con derechos de autor, no redistribuible
 carpeta_documentos/

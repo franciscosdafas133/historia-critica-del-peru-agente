@@ -129,6 +129,61 @@ PRESUPUESTO = {
 # suyos solo por tamano. El README lo documenta como hecho de diseno.
 CUPO_POR_DOC = 3
 
+# Umbrales de la senal semantica en el gate de alcance, medidos sobre el
+# banco de 77 preguntas con pruebas/calibrar_semantico.py (indice de Cohere
+# embed-v4.0, 1024 dim). Distribucion observada:
+#
+#     preguntas del curso   mediana 0.525   min 0.298   max 0.725
+#     preguntas ajenas      mediana 0.291   min 0.169   max 0.495
+#
+# Las dos nubes se solapan entre 0.30 y 0.50, asi que ningun umbral unico
+# separa bien. De ahi los dos cortes: fuera de la zona de solape decide la
+# semantica sola; dentro de ella decide la senal lexica, que es justo donde
+# esta es fiable (preguntas administrativas, autores, filtros de semana).
+#
+#   >= ALTA  el corpus trata el tema sin duda -> aceptar
+#   <  BAJA  no lo trata -> rechazar
+#   en medio -> lo decide el puntaje lexico
+#
+# ALTA = 0.51: por encima no se cuela ninguna ajena del banco.
+# BAJA = 0.30: por debajo no cae ninguna del curso (la mas baja es 0.298,
+#              "¿Que se ve en la semana 13?", que ademas entra por la ruta
+#              estructural y no llega hasta aqui).
+UMBRAL_SIM_ALTA = 0.51
+UMBRAL_SIM_BAJA = 0.30
+
+# Minimo lexico exigido DENTRO de la zona gris semantica (0.30-0.51), donde
+# ninguna de las dos senales decide sola. Curva medida sobre las 27 preguntas
+# del banco que caen en esa franja (13 del curso, 14 ajenas):
+#
+#     umbral   pierde del curso   cuela ajenas
+#       1.0          1/13             6/14
+#       1.1          3/13             4/14
+#       1.4          4/13             1/14
+#       1.6          7/13             0/14
+#
+# No hay corte limpio: "¿Quien fue Tupac Amaru II?" (ajena) puntua 1.39 y
+# "¿Que dice Klaren sobre el APRA?" (del curso) puntua 1.93 -- las nubes se
+# solapan de verdad.
+#
+# Medido de extremo a extremo sobre el banco completo:
+#
+#     umbral   responde del curso   rechaza ajenas   global
+#       1.0         49/49 (100%)      23/28 (82%)     93,5%
+#       1.2         47/49  (96%)      26/28 (93%)     94,8%
+#       1.4         47/49  (96%)      28/28 (100%)    97,4%   <- elegido
+#
+# 1.2 es estrictamente peor que 1.4: pierde las mismas dos preguntas del
+# curso y ademas deja pasar dos ajenas.
+#
+# Con 1.4 el coste son dos preguntas reales -- "¿Por que varian tanto las
+# cifras de poblacion prehispanica?" y "¿Como se relacionan independencia,
+# sociedad y fiscalidad?" -- a cambio de cerrar por completo la puerta a la
+# historia peruana que el curso no cubre. Se acepta porque ese era el fallo
+# que hacia al agente inventar: devolvia diez fragmentos sobre ferrocarriles
+# para una pregunta sobre Sendero Luminoso.
+UMBRAL_ZONA_GRIS = 1.4
+
 
 # ===========================================================================
 # 4.2  COMPILADOR DE REQUISITOS
@@ -393,10 +448,37 @@ def _ranking_bm25(idx, terms, n):
 
 
 def _ranking_denso(idx, texto, n):
-    """El "dense" del paper. Aqui TF-IDF/coseno: es el unico espacio vectorial
-    disponible sin GPU ni base vectorial. Es una sustitucion, no un equivalente
-    -- TF-IDF no captura sinonimia, que es justo lo que aportaria un embedding.
+    """La senal DENSA del paper (4.3).
+
+    Usa embeddings cuando estan disponibles (corpus/embeddings.npz + clave de
+    API) y cae a TF-IDF/coseno cuando no. La diferencia importa: TF-IDF sigue
+    contando palabras, asi que no reconoce que "viruela" y "sarampion"
+    responden a una pregunta sobre "epidemias". Los embeddings si.
+
+    El fallback no es decorativo: si Render se queda sin cuota de embeddings
+    a mitad de una clase, el motor sigue respondiendo con las senales
+    lexicas en vez de caerse.
     """
+    import semantico
+    # Se embebe SIEMPRE la pregunta original del estudiante, nunca los
+    # terminos residuales de un requisito. Motivo medido: el haz llama a esta
+    # funcion una vez por requisito y por ronda, con un texto distinto cada
+    # vez, asi que el cache no servia de nada y cada consulta acababa
+    # haciendo 5-10 llamadas de embedding. El p95 subio de 187 ms a 7,8 s.
+    #
+    # Ademas de barato, es mas correcto: la similitud semantica de "colapso
+    # demografico causa provoco" (terminos residuales sueltos) es ruido; la
+    # de la pregunta completa es la senal que se quiere.
+    sims = semantico.similitudes(idx.get("_ceres_consulta") or texto, idx)
+    if sims is not None:
+        # Umbral deliberadamente bajo: la frontera busca COBERTURA, no
+        # precision (4.3) -- lo que sobre lo poda el scorer de conjuntos
+        # despues, y lo que se pierda aqui ya no se puede recuperar. Con
+        # Cohere las similitudes viven en un rango mas bajo que con Gemini
+        # (la mediana de una pregunta valida es 0.525), asi que 0.20 deja
+        # entrar el material relacionado sin arrastrar el corpus entero.
+        return [int(i) for i in np.argsort(-sims)[:n] if sims[i] > 0.20]
+
     v = idx["tfidf"].transform([texto])
     sims = (idx["M"] @ v.T).toarray().ravel()
     return [int(i) for i in np.argsort(-sims)[:n] if sims[i] > 0]
@@ -1014,10 +1096,58 @@ def fuera_de_alcance(pregunta, reqs, idx, plan=None):
 
     puntaje = PESO_DENSIDAD * (densidad / 100.0) + (bm25_top10 / 10.0)
 
-    if puntaje < UMBRAL:
-        return True, ("El material autorizado del curso no cubre esta consulta: "
-                      "sus terminos aparecen sueltos, en documentos que no "
-                      "desarrollan el tema.")
+    # Senal semantica: ¿hay algo en el corpus que HABLE de esto, aunque no
+    # repita las palabras? Es lo que las senales lexicas no pueden ver.
+    #
+    # Se usa como arbitro en los dos sentidos, porque los dos fallos existen:
+    #   - rescata preguntas del curso cuyo vocabulario no coincide con el de
+    #     las lecturas ("epidemias" vs "viruela/sarampion")
+    #   - rechaza preguntas ajenas que comparten palabras con el corpus
+    #     ("gobierno de Velasco Alvarado")
+    #
+    # Si la capa semantica no esta disponible (sin indice, sin clave, sin
+    # cuota) devuelve None y el gate decide solo con lo lexico, como antes.
+    import semantico
+    sim = semantico.similitud_maxima(pregunta, idx)
+
+    if sim is None:
+        # Sin capa semantica (sin indice, sin clave, sin cuota): decide solo
+        # lo lexico, como antes de existir esta senal.
+        if puntaje < UMBRAL:
+            return True, ("El material autorizado del curso no cubre esta "
+                          "consulta: sus terminos aparecen sueltos, en "
+                          "documentos que no desarrollan el tema.")
+        return False, None
+
+    if sim >= UMBRAL_SIM_ALTA:
+        return False, None                # el corpus trata el tema, sin duda
+
+    if sim < UMBRAL_SIM_BAJA:
+        return True, ("El material autorizado del curso no trata este tema. "
+                      "El agente solo responde con las lecturas, diapositivas "
+                      "y documentos del curso.")
+
+    # --- zona de solape (0.30-0.51): aqui viven los casos dificiles ---
+    #
+    # Un primer intento delegaba esta franja entera a la senal lexica, y no
+    # sirvio de nada: las cinco preguntas que se colaban ("Velasco Alvarado"
+    # 0.45, "Tupac Amaru II" 0.47, "guerra del Pacifico" 0.50) caen justo
+    # aqui, y la senal lexica es precisamente la que ya fallaba con ellas.
+    #
+    # Lo que si las separa es exigir las DOS cosas a la vez. Una pregunta
+    # legitima que cae en esta franja lo hace por vocabulario poco frecuente
+    # ("¿Fue la independencia un proyecto nacional unificado?", sim 0.396)
+    # pero tiene respaldo lexico fuerte: el corpus desarrolla el tema. Una
+    # ajena tiene similitud media porque comparte dominio -- historia
+    # peruana -- pero ningun bloque la desarrolla.
+    #
+    # Se pide un minimo lexico mas alto que el general: en esta franja la
+    # duda ya esta instalada, y el coste de equivocarse es afirmar con
+    # evidencia que no sostiene la respuesta.
+    if puntaje < UMBRAL_ZONA_GRIS:
+        return True, ("El material autorizado del curso menciona algo de esto, "
+                      "pero no lo desarrolla: no hay evidencia suficiente para "
+                      "responder sin inventar.")
 
     return False, None
 
@@ -1376,6 +1506,12 @@ def recuperar(pregunta, idx, modo_interaccion="preguntar"):
     menos evidencia que una explicacion causal, y mandarles 14k tokens es
     gasto sin retorno.
     """
+    # La pregunta original queda disponible para toda la consulta: es lo
+    # unico que se embebe, una sola vez, y de ahi salen tanto la senal densa
+    # de la frontera como la del gate. Sin esto el haz embebia terminos
+    # residuales en cada ronda y la latencia se multiplicaba por 40.
+    idx["_ceres_consulta"] = pregunta
+
     reqs, plan = compilar_requisitos(pregunta, idx)
 
     if modo_interaccion in ("repasar",):

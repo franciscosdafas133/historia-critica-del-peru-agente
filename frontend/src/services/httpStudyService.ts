@@ -80,6 +80,9 @@ export const httpStudyService: StudyService = {
       evidence,
       confidence: confidenceFrom(evidence),
       rawText: narrativeFrom(data),
+      // Sin fragmentos y sin error de generación = el motor se abstuvo a
+      // propósito, no falló.
+      outOfScope: data.paquetes.length === 0 && !data.error_generacion,
     }
   },
 

@@ -23,6 +23,12 @@ export interface UnderstandResponse {
    * componente lo muestra en vez de los 4 campos separados de `answer`
    * (que el backend no produce sin arriesgar romper esa garantía de citas). */
   rawText?: string
+  /** El motor se abstuvo: la pregunta queda fuera de lo que cubre el material
+   * del curso. No es un error — es el límite funcionando. Se marca aparte del
+   * texto para que la interfaz pueda distinguirlo de una respuesta normal:
+   * si se muestra igual que una explicación, el estudiante no sabe si el
+   * agente falló o si preguntó algo fuera de alcance. */
+  outOfScope?: boolean
 }
 
 export interface SolveHint {
