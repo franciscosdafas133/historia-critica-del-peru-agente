@@ -829,15 +829,37 @@ def fuera_de_alcance(pregunta, reqs, idx, plan=None):
     terminos daba 0.667 -> ANSWER. El motor afirmaba tener evidencia de algo
     que el corpus no contiene.
 
-    La senal correcta no es cuantos terminos coinciden, sino si el mejor
-    bloque del corpus responde de verdad: se exige que BM25 -- que ya pondera
-    por frecuencia inversa y por longitud -- alcance un minimo, y que los
-    terminos de contenido de la pregunta no sean casi todos desconocidos.
+    La senal correcta no es cuantos terminos de la pregunta existen en el
+    corpus, sino si algun bloque DESARROLLA el tema: densidad de repeticion
+    de esos terminos y cuantos bloques buenos hay (ver el detalle mas abajo,
+    donde se combinan las dos senales).
+
+    Rutas exentas, que no pasan por el puntaje porque las responde el indice
+    estructural y no BM25: consultas con filtro de semana/unidad, consultas
+    por un autor del corpus y consultas administrativas con vocabulario del
+    silabo.
     """
     # Ancla estructural ("semana 13", "unidad 2"): la responde el indice
     # estructural, no BM25, asi que el gate no aplica.
     if plan and plan.get("filtros"):
         return False, None
+
+    # Peticiones de extraer el producto evaluado. El motor no puede "negarse"
+    # -- su trabajo es traer evidencia, y el cronograma es evidencia legitima
+    # para una consulta sobre el examen -- pero SI puede no entregar el
+    # maximo de contexto a quien pide las respuestas. Quien debe negarse a
+    # resolver la tarea es el prompt (seccion TRABAJOS Y EVALUACIONES del
+    # NUCLEO en agente.py); esto solo evita alimentar el intento.
+    low_p = normtxt(pregunta)
+    plano_p = " " + re.sub(r"[^a-z0-9]+", " ", low_p).strip() + " "
+    if any(f" {f} " in plano_p for f in (
+            "respuestas del examen", "respuestas de la evaluacion",
+            "resuelve por mi", "resuelveme", "hazme el trabajo",
+            "escribeme el ensayo", "dame las respuestas",
+            "haz mi tarea", "resuelve el ejercicio por mi")):
+        return True, ("Esta consulta pide el producto de una evaluacion. El agente "
+                      "puede ensenar el tema y senalar que lecturas cubren cada "
+                      "parte, pero no entrega el trabajo resuelto.")
 
     terms = reqs[0]["terms"]
     if not terms:
@@ -870,8 +892,25 @@ def fuera_de_alcance(pregunta, reqs, idx, plan=None):
                    "entrega", "plazo", "cronograma", "silabo", "evaluacion",
                    "rubrica", "creditos", "credito", "profesor", "docente",
                    "horario", "asistencia", "sumilla", "bibliografia",
-                   "requisito", "requisitos", "seccion")
-        if any(t in fuertes for t in terms):
+                   "requisito", "requisitos", "seccion", "evalua", "evaluar",
+                   "lecturas", "lectura", "unidad", "semana", "temas", "tema")
+
+        # Se busca en el TEXTO de la pregunta, no en los terminos del
+        # requisito: palabras como "semana" o "unidad" se filtran de los
+        # terminos por ser vocabulario estructural, y con ello "¿en que
+        # semana se ve la independencia?" perdia su unica marca
+        # administrativa y caia al puntaje general.
+        marca_admin = any(f" {f} " in plano_p for f in fuertes)
+
+        # Pero mencionar "examen" no convierte en administrativa a cualquier
+        # consulta: "cual es la mejor manera de estudiar para un examen?" es
+        # una peticion de tecnica de estudio, no del calendario del curso.
+        # Se exige que la pregunta pida un DATO del curso, no un consejo.
+        pide_consejo = any(f" {f} " in plano_p for f in (
+            "mejor manera", "como estudiar", "consejos", "recomiendas",
+            "recomiendame", "tips", "como memorizar", "como aprender"))
+
+        if marca_admin and not pide_consejo:
             return False, None
 
     # 1. Terminos que el corpus no conoce en absoluto.
@@ -901,64 +940,84 @@ def fuera_de_alcance(pregunta, reqs, idx, plan=None):
     #    lado en documentos sin relacion.
     toks_b = _tokens_bloques(idx)
 
-    # Se mide la FRACCION PONDERADA POR IDF de la pregunta que algun bloque
-    # concentra. Medido sobre este corpus:
+    # 2. ¿El corpus TRATA el tema, o solo contiene sus palabras?
     #
-    #   dentro:  colapso poblacion andina siglo XVI ....... 1.00
-    #            division norte patriota sur realista ..... 1.00
-    #            haciendas azucareras aprismo ............. 0.75
-    #            Lima concentro poder resto pais .......... 0.83
-    #   fuera:   quien gano mundial futbol 2022 ........... 0.50
-    #            capital de Francia ....................... 1.00  <- dificil
+    #    La version anterior de este gate medía la fraccion IDF de terminos
+    #    que algun bloque concentraba. No funcionaba, y el banco de 77
+    #    preguntas lo dejo claro: rechazaba 0 de 8 preguntas de historia
+    #    peruana ajenas al temario.
     #
-    # El caso "capital de Francia" no lo resuelve la concentracion: ambos
-    # terminos existen y coinciden (el corpus habla de capitales europeas).
-    # Lo resuelve el peso: "capital" aparece en el 13% de los bloques, asi
-    # que aporta poco, y la pregunta se sostiene casi solo sobre "francia",
-    # que el curso menciona de pasada. Por eso se exige ademas que la masa
-    # IDF concentrada supere un minimo absoluto: un termino raro suelto no
-    # basta para afirmar que el corpus trata el tema.
+    #        "reforma agraria 1969"       frac = 1.000   (FUERA del corpus)
+    #        "colapso poblacion andina"   frac = 1.000   (del curso)
+    #
+    #    Ningun umbral separa 1.000 de 1.000. El problema es de fondo: una
+    #    pregunta de historia peruana ajena usa el MISMO vocabulario que una
+    #    del temario, asi que la presencia de terminos no distingue nada.
+    #
+    #    Lo que si distingue son dos senales sobre la evidencia real:
+    #
+    #    DENSIDAD - cuantas veces por mil tokens repite un bloque los terminos
+    #    de la pregunta. Un texto que TRATA un tema lo repite; uno que solo lo
+    #    menciona de pasada, no. Medido sobre el banco:
+    #        dentro  mediana 153,8 por mil
+    #        fuera   mediana  12,6 por mil, maximo 59,5
+    #
+    #    BM25_TOP10 - la media de los diez mejores scores. Si el corpus trata
+    #    el tema hay VARIOS bloques buenos; si es coincidencia, hay uno.
+    #        dentro  mediana 10,7
+    #        fuera   mediana  5,1
+    #
+    #    Se combinan en un puntaje en vez de exigir ambas por separado: una
+    #    pregunta legitima puede ser fuerte en una y mediana en la otra
+    #    ("¿Que dice Klaren sobre el APRA?" tiene densidad 200 pero top10
+    #    5,3, porque el corpus tiene poco sobre el APRA). Exigir las dos
+    #    mataba preguntas reales; exigir una sola dejaba pasar las ajenas.
     pesos = {t: _idf(idx, t) for t in terms}
     total = sum(pesos.values())
     if total <= 0:
         return True, "La consulta no contiene terminos que buscar."
 
-    mejor_frac, mejor_masa = 0.0, 0.0
-    for s in toks_b:
+    scores = idx["bm25"].get_scores(terms)
+    bm25_top10 = float(np.mean(np.sort(scores)[-10:])) if len(scores) else 0.0
+
+    densidad = 0.0
+    for i, s in enumerate(toks_b):
         juntos = [t for t in terms if t in s]
-        if not juntos:
+        if len(juntos) < 2:
             continue
-        masa = sum(pesos[t] for t in juntos)
-        frac = masa / total
-        if frac > mejor_frac:
-            mejor_frac, mejor_masa = frac, masa
+        texto = tokenizar(idx["bloques"][i]["texto"])
+        if texto:
+            ocurrencias = sum(texto.count(t) for t in juntos)
+            densidad = max(densidad, ocurrencias / len(texto) * 1000)
 
-    # Umbral elegido por barrido sobre 34 preguntas etiquetadas a mano (22
-    # dentro del temario, 12 fuera). Curva medida:
+    # Pesos y umbral elegidos por barrido sobre el banco de 77 preguntas
+    # (pruebas/banco_preguntas.py). Curva medida, w = peso de la densidad:
     #
-    #     umbral   falsos negativos   falsos positivos
-    #      0.45           0                  3
-    #      0.50           0                  1     <- elegido
-    #      0.58           1                  1
-    #      0.62           2                  1
-    #      0.70           3                  1
+    #     w     umbral   falsos negativos   falsos positivos   global
+    #    0.3     0.8            1                  6           68/77
+    #    0.5     1.0            4                  3           68/77
+    #    0.7     1.0            1                  5           69/77  <- elegido
+    #    1.0     1.8           11                  0           64/77
+    #    1.5     1.2            1                  6           68/77
     #
-    # Por encima de 0.55 solo se pierden preguntas reales del curso sin
-    # bloquear nada adicional. Se prefiere el falso positivo al falso
-    # negativo: negarse a responder "por que las haciendas azucareras
-    # originaron el aprismo" -- una semana entera del curso -- es peor que
-    # devolver evidencia debil, porque el NUCLEO del agente ya obliga al
-    # modelo a declarar cuando la evidencia no alcanza.
+    # Se prefiere el falso positivo al falso negativo: negarse a responder
+    # una pregunta real del curso deja al estudiante sin nada, mientras que
+    # devolver evidencia debil todavia pasa por el NUCLEO del agente, que
+    # obliga al modelo a declarar cuando la evidencia no alcanza.
     #
-    # NOTA: 34 preguntas no son un banco de evaluacion. El umbral es
-    # defendible, no calibrado; el paper (8.3) exige anotacion previa y
-    # splits por documento, que requieren reconstruir el banco borrado.
-    UMBRAL_FRAC = 0.50
+    # NOTA: 77 preguntas etiquetadas por una sola persona no son el banco
+    # anotado que exige el paper (8.3: anotacion previa, splits por documento,
+    # varios conjuntos minimos validos). El umbral es defendible con datos,
+    # no calibrado.
+    PESO_DENSIDAD = 0.7
+    UMBRAL = 1.0
 
-    if mejor_frac < UMBRAL_FRAC:
+    puntaje = PESO_DENSIDAD * (densidad / 100.0) + (bm25_top10 / 10.0)
+
+    if puntaje < UMBRAL:
         return True, ("El material autorizado del curso no cubre esta consulta: "
-                      "sus terminos aparecen sueltos, en documentos sin relacion "
-                      "con la pregunta.")
+                      "sus terminos aparecen sueltos, en documentos que no "
+                      "desarrollan el tema.")
 
     return False, None
 
