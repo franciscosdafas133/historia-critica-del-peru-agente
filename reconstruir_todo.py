@@ -42,8 +42,11 @@ print("=" * 74)
 print("""
 Listo para usar:
 
-  python recuperar.py "tu pregunta"          ver que evidencia recupera
   python agente.py "tu pregunta"             armar el prompt completo
   python agente.py "tu pregunta" --enviar    generar la respuesta (requiere API key)
-  python evaluar.py --estrato multihop       comparar estrategias
+  python servidor.py                         levantar la web local
+
+El motor de recuperacion es ceres_omega.py (CERES-Omega). El banco de
+evaluacion comparativa se borro junto con FORMA-IR en c724b66 y todavia no
+se ha reconstruido: hoy no hay forma de medir este motor contra una baseline.
 """)

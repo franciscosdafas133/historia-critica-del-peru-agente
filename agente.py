@@ -7,7 +7,7 @@ Fase 4 del metodo: generacion con evidencia citada.
 Une las piezas anteriores:
   construir_corpus.py -> corpus anclado a la fuente
   indexar_corpus.py   -> indices lexico + estructural
-  recuperar.py        -> paquetes de evidencia construidos por consulta
+  ceres_omega.py      -> paquetes de evidencia construidos por consulta
   agente.py           -> arma el prompt y verifica las citas
 
 Modos:
@@ -25,13 +25,12 @@ ANTHROPIC_API_KEY.
 import sys, io, os, json, pickle, argparse, re
 
 import tiktoken
-# Metodo de recuperacion: FORMA-IR (forma_ir_recuperar.py) reemplaza al
-# metodo lexico anterior (recuperar.py), decision explicita tomada tras
-# revisar el hallazgo de la evaluacion de Fase I sobre las 57 preguntas
-# reales del curso -- ver forma_ir_recuperar.py para el detalle y el
-# riesgo documentado. recuperar.py se conserva intacto en el repo por si
-# hace falta revertir (ver git log de este archivo).
-from forma_ir_recuperar import recuperar, analizar_pregunta
+# Metodo de recuperacion: CERES-Omega (ceres_omega.py), implementado desde el
+# manuscrito del proyecto. Sustituye a FORMA-IR, borrado en c724b66 tras medir
+# que perdia contra BM25 puro en ranking documental. El modulo documenta en su
+# docstring que partes del paper se implementan fiel y cuales se sustituyen
+# por equivalentes deterministas por falta de modelos entrenados.
+from ceres_omega import recuperar, analizar_pregunta
 
 RAIZ = os.path.dirname(os.path.abspath(__file__))
 IDX = os.path.join(RAIZ, "corpus", "indice.pkl")
