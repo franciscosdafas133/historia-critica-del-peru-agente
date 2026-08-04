@@ -59,7 +59,15 @@ function friendlyError(raw: string): string {
 function narrativeFrom(data: BackendRespuesta): string {
   if (data.respuesta) return data.respuesta
   if (data.error_generacion) return friendlyError(data.error_generacion)
-  if (data.paquetes.length === 0) return SIN_EVIDENCIA
+  if (data.paquetes.length === 0) {
+    // El motor explica POR QUÉ se abstuvo (tema fuera del corpus, o petición
+    // del producto de una evaluación) en el primer aviso. Mostrar ese motivo
+    // en vez del mensaje genérico: sin él, el estudiante veía una respuesta
+    // vacía y no sabía si el agente falló o si su pregunta está fuera de
+    // alcance — dos situaciones que exigen reacciones distintas.
+    const motivo = data.avisos?.[0]
+    return motivo ? motivo : SIN_EVIDENCIA
+  }
   return ''
 }
 

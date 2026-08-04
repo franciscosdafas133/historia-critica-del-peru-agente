@@ -1,0 +1,1325 @@
+{
+ "_instrucciones": {
+  "oro": "marca cada bloque: 'si' (evidencia necesaria), 'no' (irrelevante), 'extra' (ayuda pero no imprescindible)",
+  "faltantes": "bloque_id de bloques del corpus que DEBERIAN estar y el motor no trajo. Son los mas valiosos: revelan fallos de recall que esta lista no puede mostrar.",
+  "sesgo": "esta lista solo contiene lo que el motor YA recupera. Anotar solo aqui da un recall optimista."
+ },
+ "preguntas": [
+  {
+   "pregunta": "¿Por qué colapsó la población andina en el siglo XVI?",
+   "bloques": [
+    {
+     "bloque_id": "aramburu-mendoza-2015-futuro-poblacion-peruana#p3",
+     "documento": "Aramburú_Mendoza_2015_Futuro_población_peruana",
+     "ubicacion": "p. 3",
+     "extracto": "7 Aramburú y Mendoza / El futuro de la población peruana: problemas y oportunidades 1. La población peruana: un futuro desafiante Como se ha discutido en trabajos anteriores, los siglos XVI y XX han sido cruciales  en la historia de la población peruana (Aramb",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-1-transiciones-demograficas-2026-1#p3",
+     "documento": "Clase_S2_1_Transiciones_demográficas_2026_1",
+     "ubicacion": "p. 3",
+     "extracto": "La población andina antes de la conquista Contreras, C (2020). La crisis demográfica del siglo XVI en los Andes: una discusión acerca de sus dimensiones y consecuencias.",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2020-crisisdemografica-sigloxvi#p1",
+     "documento": "Contreras_2020_Crisisdemográfica_sigloXVI",
+     "ubicacion": "p. 1",
+     "extracto": "Nº 61, 2020. Páginas 7-25 Diálogo Andino LA CRISIS DEMOGRÁFICA DEL SIGLO XVI  EN LOS ANDES: UNA DISCUSIÓN ACERCA  DE SUS DIMENSIONES Y CONSECUENCIAS THE DEMOGRAPHIC CRISIS OF THE 16TH CENTURY IN THE ANDES:  A DISCUSSION ABOUT ITS DIMENSIONS AND CONSEQUENCES Ca",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s3-1-pluralismo-medico-transiciones-epidemiologicas-20#p12",
+     "documento": "Clase_S3_1_Pluralismo_Médico_Transiciones_Epidemiológicas_2026_1",
+     "ubicacion": "p. 12",
+     "extracto": "• Este modelo describe el cambio histórico en los patrones de enfermedad y  mortalidad de una sociedad. Este proceso está vinculado a transformaciones en las  condiciones de vida, la urbanización, patrones culturales, el conocimiento  científico, la intervenci",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "espinoza-fort-espinoza-2022-reorganizar-el-peru#p14",
+     "documento": "Espinoza_Fort_Espinoza_2022_Reorganizar_el Perú",
+     "ubicacion": "p. 14",
+     "extracto": "[ Reformas pendientes para un nuevo modelo de desarrollo ] 291 producción minera virreinal, que llegó a un pico productivo durante la  última década del siglo anterior, seguido de una caída sostenida y un  colapso total durante la Guerra de la Independencia (S",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "hcp-dialogosinterregionales-guion-2026-1-up-unsa#p2",
+     "documento": "HCP_Diálogosinterregionales_guion_2026_1_UP_UNSA",
+     "ubicacion": "p. 2",
+     "extracto": "• Los profesores asignarán a los grupos un tema específico sobre el cual investigar. En el  primer contacto entre los estudiantes, cada uno de los grupos conformados se pondrá de  acuerdo sobre ello.  • Luego de la elección del tema y entre dos a cuatro pregun",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana4-2-2026-1#p12",
+     "documento": "Clase_Semana4_2_2026_1",
+     "ubicacion": "p. 12",
+     "extracto": "El Niño como factor en la  historia • Moche y el colapso del siglo VI. Un  meganiño probablemente debilitó la  infraestructura de riego y la  legitimidad de las élites  sacerdotales, que no pudieron  \"controlar\" las lluvias, facilitando la  transición hacia nu",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aramburu-2012-poblaciondiferente-pags-55-72#p1",
+     "documento": "Aramburú_2012_Poblacióndiferente_pags-55-72",
+     "ubicacion": "p. 1",
+     "extracto": "UNA POBLACIÓN DIFERENTE:  CINCO DÉCADAS DE CAMBIO DEMOGRÁFICO Carlos Eduardo Aramburú En este breve artículo presentamos la dinámica demográfica de la población  peruana en las últimas cinco décadas. Los cambios poblacionales son claves para  entender la dinám",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-5-1-2026-1-hcp#p13",
+     "documento": "Clase_Semana_5_1_2026_1_HCP",
+     "ubicacion": "p. 13",
+     "extracto": "El virreinato del Perú en sus inicios En el siglo XVI, la extensión del  Virreinato del Perú era de  aproximadamente 5 veces del  territorio peruano actual.",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p41",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 41",
+     "extracto": "12. Mapa de la región de Ayacucho. Mapa elaborado  por el Nelson Pereyra. Extraído de Nelson Pereyra:  «Haciendas y circuitos mercantiles en la economía de  la región de Huamanga, siglos XVIII y XI», en Pablo F.  Luna y Francisco Quiroz Chueca (eds.): Hacienda",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué dice Contreras sobre el centralismo?",
+   "bloques": [
+    {
+     "bloque_id": "contreras-2002-centralismo-peruano#p5",
+     "documento": "Contreras_2002_Centralismo_peruano",
+     "ubicacion": "p. 5",
+     "extracto": "5 EL CENTRALISMO PERUANO EN SU PERSPECTIVA HISTORICA L os actuales debates, tanto en la escena estatal como en el terreno de la opinión pública, acerca de la naturaleza del centralismo peruano y la mejor manera de ponerle fin y empezar a andar por la senda des",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-1994-origenes-explosion-demografica#p1",
+     "documento": "Contreras_1994_Orígenes_explosión_demográfica",
+     "ubicacion": "p. 1",
+     "extracto": "http://www.iep.org.pe    SOBRE LOS ORÍGENES DE LA EXPLOSIÓN DEMOGRÁFICA EN EL PERÚ: 1876-1940* Carlos Contreras  DOCUMENTO DE TRABAJO Nº61  IEP Instituto de Estudios Peruanos  Documento de trabajo Nº61 Serie Economía Nº21      SOBRE LOS ORÍGENES DE LA  EXPLOSI",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "historia-critica-del-peru-122005-a-2026-01-pre#p4",
+     "documento": "Historia Crítica del Perú - 122005 - A (2026-01-PRE)",
+     "ubicacion": "p. 4",
+     "extracto": "demográfico. En Cambios sociales en el Peru 1968-2008, Orlando Plaza (Coordinador).   Pp.   55-72. https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/174317/Cam bios%20sociales%20en%20el%20Perú%201968-2008.pdf? sequence=1&isAllowed=y Obligatoria",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p3",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 3",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "espinoza-fort-espinoza-2022-reorganizar-el-peru#p17",
+     "documento": "Espinoza_Fort_Espinoza_2022_Reorganizar_el Perú",
+     "ubicacion": "p. 17",
+     "extracto": "/ El Perú pendiente: ensayos para un desarrollo con bienestar/ 294 desarrollo de circuitos comerciales importantes entre el Callao y Estados  Unidos, Europa y Asia –el canal de Panamá se inauguró en 1914–; y el crecimiento de una industria nacional casi exclus",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-sf-concepto-nacion#p1",
+     "documento": "Contreras_sf_Concepto_Nación",
+     "ubicacion": "p. 1",
+     "extracto": "EL CONCEPTO  DE NACIÓN  EL PASO DE LOS LIBERTADORES  (APOTEOSIS DE AYACUCHO)  Daniel Hernández  Siglo XX  /  Óleo sobre lienzo  61 x 114 cm  /  (PO-014)",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2020-crisisdemografica-sigloxvi#p1",
+     "documento": "Contreras_2020_Crisisdemográfica_sigloXVI",
+     "ubicacion": "p. 1",
+     "extracto": "Nº 61, 2020. Páginas 7-25 Diálogo Andino LA CRISIS DEMOGRÁFICA DEL SIGLO XVI  EN LOS ANDES: UNA DISCUSIÓN ACERCA  DE SUS DIMENSIONES Y CONSECUENCIAS THE DEMOGRAPHIC CRISIS OF THE 16TH CENTURY IN THE ANDES:  A DISCUSSION ABOUT ITS DIMENSIONS AND CONSEQUENCES Ca",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-cueto-2008-caminos-ciencia-estado#p7",
+     "documento": "Contreras_Cueto_2008_Caminos_Ciencia_Estado",
+     "ubicacion": "p. 7",
+     "extracto": "v.15, n.3, p.635-655, jul.-set. 2008 641 Caminos, ciencia y Estado en el Perú, 1850-1930",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-1-transiciones-demograficas-2026-1#p3",
+     "documento": "Clase_S2_1_Transiciones_demográficas_2026_1",
+     "ubicacion": "p. 3",
+     "extracto": "La población andina antes de la conquista Contreras, C (2020). La crisis demográfica del siglo XVI en los Andes: una discusión acerca de sus dimensiones y consecuencias.",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p196",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 196",
+     "extracto": "212  Klarén  patrones agrarios y comerciales. En realidad, incluso  antes de que Haya formulara sus ideas sobre el particular,  El  Norte,  como  se recordará,  había  abogado  insistentemente contra la política de absorción de las  tierras y el comercio por p",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Por qué las haciendas azucareras originaron el aprismo?",
+   "bloques": [
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p8",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 8",
+     "extracto": "El año de 1974 fue el cincuentenario de uno de los  partidos que marcó el desarrollo político del Perú: el  APRA.. Gracias a los notables esfuerzos del historiador  norteamericano Peter F. Klarén disponemos ahora de uno  de los estudios que nos permite compren",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p3",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 3",
+     "extracto": "PETER F. KLAREN Formación   de las   haciendas  azucareras y   orígenes del   APRA                                          Instituto de Estudios Peruanos",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p18",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 18",
+     "extracto": "EN EL CORAZÓN de la vieja Lima y a orillas del Rímac  se destaca el coso rosado de la Plaza de Acho, escenario  colosal de pompa y dramatismo. A ella solía acudir, en  tiempos coloniales, junto con todo Lima, el virrey y su,  corte, con deslumbrante atavío, a",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p6",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 6",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "rivasplatavarillas-2014-cambio-paisajes-costa-norte#p20",
+     "documento": "RivasplataVarillas_2014_Cambio_paisajes_costa_norte",
+     "ubicacion": "p. 20",
+     "extracto": "60 Historia 2.0, Año IV, No. 8, Bucaramanga, diciembre 2014, ISSN 2027-9035, pp. Paula Ermila Rivasplata Varillas. Cambio de paisajes de la costa norte peruana desde una perspectiva histórica y geográfica 47-73 insumo para la próspera industria del jabón en lo",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué significó la división norte patriota y sur realista?",
+   "bloques": [
+    {
+     "bloque_id": "o-phelan-2019-norte-patriota-sur-realista#p6",
+     "documento": "O_Phelan_2019_Norte_patriota_Sur_realista",
+     "ubicacion": "p. 6",
+     "extracto": "El gaditanismo <institucionals en las Huastecas (México) :(Re)Acomodo territorial-militar 0 una confrontación socioétnica? Antonio Escobar Ohmstede 247 Red vial y flujo de correspondencia Contingencias en el servicio de correos en el extremo sur peruano (1790-",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "o-phelan-2019-norte-patriota-sur-realista#p3",
+     "documento": "O_Phelan_2019_Norte_patriota_Sur_realista",
+     "ubicacion": "p. 3",
+     "extracto": "TERRITORIALIDAD Y PODER REGIONAL DE LAS INTENDENCIAS EN LAS INDEPENDENCIAS DE MÉXICO Y PERÚ SCARLETT OPHELAN GODOY ANA CAROLINA IBARRA COMPILADORAS 8 AMAUA39 VoiooaJoo 1 1 1 1 t 1a 1 1 1 1 1 1 Fondo Editorial del Congreso del Perú  oal",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "o-phelan-2019-norte-patriota-sur-realista#p20",
+     "documento": "O_Phelan_2019_Norte_patriota_Sur_realista",
+     "ubicacion": "p. 20",
+     "extracto": "nr  EL NORTE PATRIOTA Y EL SUR REALISTA división territorial del Perú en el contexto de la La Independencia (1820-1824) s  1",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p6",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 6",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Por qué Lima concentró el poder frente al resto del país?",
+   "bloques": [
+    {
+     "bloque_id": "aramburu-2012-poblaciondiferente-pags-55-72#p7",
+     "documento": "Aramburú_2012_Poblacióndiferente_pags-55-72",
+     "ubicacion": "p. 7",
+     "extracto": "Una población diferente: cinco décadas de cambio demográfico / Carlos Eduardo Aramburú 61 La urbanización del interior del país es; por un lado, un reto por su velocidad, lo  que afecta los recursos naturales y el medio ambiente e incrementa la demanda  por se",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "espinoza-fort-espinoza-2022-reorganizar-el-peru#p10",
+     "documento": "Espinoza_Fort_Espinoza_2022_Reorganizar_el Perú",
+     "ubicacion": "p. 10",
+     "extracto": "[ Reformas pendientes para un nuevo modelo de desarrollo ] 287 Reorganizar el Perú: ciudades  intermedias y desarrollo Álvaro Espinoza, Ricardo Fort y Mauricio Espinoza Al inicio de la pandemia por COVID-19, Lima Metropolitana concentraba más del 60% de camas",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-1-transiciones-demograficas-2026-1#p16",
+     "documento": "Clase_S2_1_Transiciones_demográficas_2026_1",
+     "ubicacion": "p. 16",
+     "extracto": "Siglo XX a la actualidad • En las décadas  de 1960 y 1970  la población  alcanzó sus  mayores tasas  de crecimiento.  • El crecimiento  se concentró  principalmente  en las áreas  urbanas.",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p91",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 91",
+     "extracto": "91 Perfilando la historia de la región en la nación creciente intensidad varios factores: el aumento poblacional y  la falta de tierra en una sociedad partícipe de un mundo industrial, pero no industrializada. Como consecuencia no pensada,  la expulsión de gen",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p233",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 233",
+     "extracto": "7/ De las elecciones a la revolución 251 el cuartel O'Donovan y los vencedores marcharon  triunfalmente sobre Trujillo. En pocas horas turbas de  braceros, blandiendo machetes y enarbolando la roja  bandera aprista, irrumpieron en la ciudad para unirse a los",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "renique-2022-nacion-radical-cap-4#p32",
+     "documento": "Renique_2022_Nación_Radical_cap.4",
+     "ubicacion": "p. 32",
+     "extracto": "por incorporarse a las cruzadas de los hombres nuevos peruanos y latinoamericanos concentró sus energías por sobre su voluntad de retomar los vínculos militantes establecidos en décadas anterio- res. Más conocidos eran ~a través de su Boletín Tiawanaco en otra",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "amat-y-leon-2012-perunuestrodecadadia#p6",
+     "documento": "Amat_y_León_2012_Perúnuestrodecadadía",
+     "ubicacion": "p. 6",
+     "extracto": "19 huaicos, deslizamientos de cerros y terremotos. Las  catástrofes no son naturales, sino sociales y económicas, ya que la desgracia radica en los daños materiales y humanos ocurridos por la presencia normal  de estos fenómenos, sobre los cuales la sociedad",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2002-centralismo-peruano#p6",
+     "documento": "Contreras_2002_Centralismo_peruano",
+     "ubicacion": "p. 6",
+     "extracto": "6 señalan, por ejemplo, que hasta más o menos 1920, la ciudad capital, Lima, supuesta cabeza del mal, nunca tuvo más del 5% de toda la población peruana (hoy, en cambio, tiene un 28%) y que hasta 1940, la región de la sierra concentraba dos tercios del total d",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana4-2-2026-1#p23",
+     "documento": "Clase_Semana4_2_2026_1",
+     "ubicacion": "p. 23",
+     "extracto": "Dollfus, Oliver (1981). Capítulo 1. Fundamentos ecológicos del espacio andino. En El reto del Espacio Andino. IEP: Lima.  pp. 11 - 68  MINAM. Perú, país de montañas. Los desafíos frente al cambio climático. pp. 36-109. Rocha A. (2013). MEGANIÑOS de la costa no",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-1994-origenes-explosion-demografica#p23",
+     "documento": "Contreras_1994_Orígenes_explosión_demográfica",
+     "ubicacion": "p. 23",
+     "extracto": "http://www.iep.org.pe    Osma fue uno de los que denunció las  injusticias del enganche y difícilmente puede  acusársele de mantener una actitud propatronal.  Alberto Ulloa, otro de los precursores del  \"pensamiento social\" en el país y autor en 1916  de una T",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué dice Klarén sobre el APRA?",
+   "bloques": [
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p3",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 3",
+     "extracto": "PETER F. KLAREN Formación   de las   haciendas  azucareras y   orígenes del   APRA                                          Instituto de Estudios Peruanos",
+     "oro": "si"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p8",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 8",
+     "extracto": "El año de 1974 fue el cincuentenario de uno de los  partidos que marcó el desarrollo político del Perú: el  APRA.. Gracias a los notables esfuerzos del historiador  norteamericano Peter F. Klarén disponemos ahora de uno  de los estudios que nos permite compren",
+     "oro": "si"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p14",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 14",
+     "extracto": "Presentación  19  factores económicos y sociales. En Piura, por ejemplo,  fue el Partido Socialista y no el APRA el que tradujo  políticamente estas mutaciones, mientras que en Lima y  Callao fueron populismos de diverso signo los que  constituyeron la expresi",
+     "oro": "si"
+    },
+    {
+     "bloque_id": "renique-2022-nacion-radical-cap-4#p22",
+     "documento": "Renique_2022_Nación_Radical_cap.4",
+     "ubicacion": "p. 22",
+     "extracto": "consentir actos de vandalismo Condorena se atreve a responder 'queremos que usted cumpla con su palabra porque mientras usted dice una cosa, las autoridades; los gamonales, hacen otra, hay muchos muertos, hay niños huérfanos; que va ser de no- sotros sin su ap",
+     "oro": "no"
+    }
+   ],
+   "faltantes": [],
+   "nota": "anotado por atribucion de autoria: son de oro los bloques del documento escrito por el autor que la pregunta nombra"
+  },
+  {
+   "pregunta": "¿Qué fue la transición demográfica en el Perú?",
+   "bloques": [
+    {
+     "bloque_id": "contreras-1994-origenes-explosion-demografica#p1",
+     "documento": "Contreras_1994_Orígenes_explosión_demográfica",
+     "ubicacion": "p. 1",
+     "extracto": "http://www.iep.org.pe    SOBRE LOS ORÍGENES DE LA EXPLOSIÓN DEMOGRÁFICA EN EL PERÚ: 1876-1940* Carlos Contreras  DOCUMENTO DE TRABAJO Nº61  IEP Instituto de Estudios Peruanos  Documento de trabajo Nº61 Serie Economía Nº21      SOBRE LOS ORÍGENES DE LA  EXPLOSI",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p1",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 1",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s1-2-indicadores-demograficos-2026-1#p16",
+     "documento": "Clase_S1_2_Indicadores_demográficos_2026_1",
+     "ubicacion": "p. 16",
+     "extracto": "Modelo de transición de la movilidad Modelo de transición demográfica Relación entre el modelo de transición de la movilidad  y el modelo de transición demográfica",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "moneda-190-07#p1",
+     "documento": "moneda-190-07",
+     "ubicacion": "p. 1",
+     "extracto": "MONEDA N° 190 36 MONEDA TRANSICIÓN DEMOGRÁFICA Con el paso de los años, se observa una tendencia  mundial hacia el envejecimiento poblacional y  el incremento de la esperanza de vida al nacer.  El Perú no es ajeno a esta transformación  demográfica, que ha tra",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s3-1-pluralismo-medico-transiciones-epidemiologicas-20#p23",
+     "documento": "Clase_S3_1_Pluralismo_Médico_Transiciones_Epidemiológicas_2026_1",
+     "ubicacion": "p. 23",
+     "extracto": "• Hacia fines del siglo XX el Perú consolida un cambio demográfico iniciados  50 años antes: descienden de manera sostenida la mortalidad infantil y  materna, aumenta la esperanza de vida y se modifica la estructura por  edades de la población. Este proceso al",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aramburu-2012-poblaciondiferente-pags-55-72#p4",
+     "documento": "Aramburú_2012_Poblacióndiferente_pags-55-72",
+     "ubicacion": "p. 4",
+     "extracto": "Cambios sociales en el Perú 1968-2008 58 Como se aprecia en el cuadro 3 y en el gráfico 1, la transición demográfica  peruana ya se había iniciado en 1961. La mortalidad, medida por la tasa bruta de  mortalidad (TBM: defunciones por cada 1000 habitantes) desci",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-1-transiciones-demograficas-2026-1#p26",
+     "documento": "Clase_S2_1_Transiciones_demográficas_2026_1",
+     "ubicacion": "p. 26",
+     "extracto": "Población y cambio social  • La transición demográfica peruana, que en términos generales está concluyendo,  constituye el telón de fondo de los cambios en la estructura social, los mercados  de trabajo, las relaciones de género y los procesos de reproducción",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "historia-critica-del-peru-122005-a-2026-01-pre#p4",
+     "documento": "Historia Crítica del Perú - 122005 - A (2026-01-PRE)",
+     "ubicacion": "p. 4",
+     "extracto": "demográfico. En Cambios sociales en el Peru 1968-2008, Orlando Plaza (Coordinador).   Pp.   55-72. https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/174317/Cam bios%20sociales%20en%20el%20Perú%201968-2008.pdf? sequence=1&isAllowed=y Obligatoria",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "marzal-ludena-2017-ciudadesintermedias#p9",
+     "documento": "Marzal_Ludeña_2017_Ciudadesintermedias",
+     "ubicacion": "p. 9",
+     "extracto": "CIUDADES INTERMEDIAS Y DESARROLLO TERRITORIAL  En este contexto las ciudades capitales y las ciudades intermedias son las que  mayores transformaciones tienen dentro de la red urbana. Las primeras, porque la  descentralización fortalece otras urbes y porque la",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2002-centralismo-peruano#p3",
+     "documento": "Contreras_2002_Centralismo_peruano",
+     "ubicacion": "p. 3",
+     "extracto": "3 CONTENIDO ORIGENES DEL CENTRALISMO PERUANO 7 RECENTRALIZACIÓN BAJO LOS BORBONES 10 CUANDO LIMA ERA POBRE Y LAS PROVINCIAS RICAS 12 EL CENTRALISMO DEL GUANO 15 LA ERA DE LA DESCENTRALIZACIÓN 17 EL CENTRALISMO EN EL SIGLO VEINTE 24 LA TRANSICIÓN DEL CENTRALISM",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Cómo afectaron las epidemias coloniales a la población indígena?",
+   "bloques": [
+    {
+     "bloque_id": "aramburu-mendoza-2015-futuro-poblacion-peruana#p3",
+     "documento": "Aramburú_Mendoza_2015_Futuro_población_peruana",
+     "ubicacion": "p. 3",
+     "extracto": "7 Aramburú y Mendoza / El futuro de la población peruana: problemas y oportunidades 1. La población peruana: un futuro desafiante Como se ha discutido en trabajos anteriores, los siglos XVI y XX han sido cruciales  en la historia de la población peruana (Aramb",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-2-intercambios-coloniales-enfermedades-2026-1#p23",
+     "documento": "Clase_S2_2_Intercambios_coloniales_enfermedades_2026_1",
+     "ubicacion": "p. 23",
+     "extracto": "Las epidemias El trabajo forzado La carestía de alimentos La apropiación violenta de las mujeres El “desgano vital”  Impacto de los intercambios coloniales en la  población nativa americana",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-1-transiciones-demograficas-2026-1#p9",
+     "documento": "Clase_S2_1_Transiciones_demográficas_2026_1",
+     "ubicacion": "p. 9",
+     "extracto": "• A finales del siglo XVII, la población comienza a recuperarse lentamente.  • Este proceso de recuperación se vio afectado por eventos que afectaron de  manera distinta a la población no indígena como a la indígena - El terremoto y tsunami que asoló Lima y Ca",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s3-1-pluralismo-medico-transiciones-epidemiologicas-20#p17",
+     "documento": "Clase_S3_1_Pluralismo_Médico_Transiciones_Epidemiológicas_2026_1",
+     "ubicacion": "p. 17",
+     "extracto": "Respuestas coloniales a las epidemias • A pesar de la recurrencia de epidemias, la sociedad colonial no  transitó hacia la segunda etapa del modelo. La atención médica  se orientaba principalmente al tratamiento de enfermos  individuales y no a la prevención c",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2020-crisisdemografica-sigloxvi#p12",
+     "documento": "Contreras_2020_Crisisdemográfica_sigloXVI",
+     "ubicacion": "p. 12",
+     "extracto": "Carlos Contreras Carranza 18 tuvo el medio siglo posterior. Si bien una mayor  despoblación debió suceder en la fase inicial,  entre 1532-1554, no habría ocurrido lo mismo  en las siguientes dos décadas, cuando cesaron las  guerras y el modo de producción indí",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-5-1-2026-1-hcp#p16",
+     "documento": "Clase_Semana_5_1_2026_1_HCP",
+     "ubicacion": "p. 16",
+     "extracto": "Las encomiendas  La encomienda fue una de las instituciones que contribuyó a  consolidar el proceso de colonización en sus primeras  décadas. Los conquistadores y colonizadores recibieron de la  Corona española una cantidad de población indígena en  recompensa",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "hcp-dialogosinterregionales-guion-2026-1-up-unsa#p2",
+     "documento": "HCP_Diálogosinterregionales_guion_2026_1_UP_UNSA",
+     "ubicacion": "p. 2",
+     "extracto": "• Los profesores asignarán a los grupos un tema específico sobre el cual investigar. En el  primer contacto entre los estudiantes, cada uno de los grupos conformados se pondrá de  acuerdo sobre ello.  • Luego de la elección del tema y entre dos a cuatro pregun",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-1994-origenes-explosion-demografica#p21",
+     "documento": "Contreras_1994_Orígenes_explosión_demográfica",
+     "ubicacion": "p. 21",
+     "extracto": "http://www.iep.org.pe    a declarar a dicha policía los casos de enfermedad por cólera, peste bubónica y fiebre amarilla, imponiéndose fuertes multas y hasta la cárcel a los familiares, médicos o dueños de hoteles que incumplieran la disposición. La Ley Sanita",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p80",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 80",
+     "extracto": "80 Regiones vivas y activas construcción de la modernidad. Como se ha explicado, las regiones suponían un nivel de articulación que (re)constituía relaciones humanas y geográficas desde lo más profundo del tiempo.  Los diferentes procesos que coincidieron en l",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "ejercicio-calificado-2#p7",
+     "documento": "Ejercicio Calificado 2",
+     "ubicacion": "p. 7",
+     "extracto": "Figura 2. Vista de Yungay tras el terremoto de 1970.  Fuente: Diario Correo, 2020.    2.2 Económicas      El terremoto de 1970 no solo fue un evento geológico, sino una materialización de la  vulnerabilidad económica acumulada en la región. A nivel cuantitativ",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué papel tuvo la geografía en la economía peruana?",
+   "bloques": [
+    {
+     "bloque_id": "o-phelan-2019-norte-patriota-sur-realista#p13",
+     "documento": "O_Phelan_2019_Norte_patriota_Sur_realista",
+     "ubicacion": "p. 13",
+     "extracto": "Scarlett O'Phelan Godoy = Ana Carolina Ibarra 15 cuidadosamente descrito en el artículo, nos permite apreciar el ejercicio de votación y los alcances de la geografía insurgente. El tema del establecimiento y operatividad de la intendencia en el virreinato de l",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "torero-escobal-2000-como-enfrentar-una-geografia-adversa#p9",
+     "documento": "Torero_Escobal_2000_Como_enfrentar_una_geografia_adversa",
+     "ubicacion": "p. 9",
+     "extracto": "13 Tabla 4 Diferencias Regionales en Acceso a Servicios y Activos: Perú 1997 ZONAS URBANAS  ZONAS RURALES RATIO Tamaño de Familia 6.1 6.3 1.0 Años de Educación (jefe de familia) 8.6 4.5 1.9 Años de Educación (adultos) 8.1 5.0 1.6 Tasa de deserción Escolar (Sec",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-1994-origenes-explosion-demografica#p7",
+     "documento": "Contreras_1994_Orígenes_explosión_demográfica",
+     "ubicacion": "p. 7",
+     "extracto": "http://www.iep.org.pe    y  tercero  examinaremos  las  políticas  desarrolladas por el Estado y eventualmente  otras instituciones en materia de población:  políticas de fomento a la inmigración, en el  segundo, y campañas de sanidad, en el tercero.  En el cu",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-sf-concepto-nacion#p5",
+     "documento": "Contreras_sf_Concepto_Nación",
+     "ubicacion": "p. 5",
+     "extracto": "255 254 EL CONCEPTO DE NACIÓN CARLOS CONTRERAS acuerdo con Partha Chatterjee (2007), el ámbito espiritual se definiría por  oposición al material. Mientras este abarca la economía, las instituciones  del Estado y la ciencia y la tecnología, aquel se referiría",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p237",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 237",
+     "extracto": "Los PROFUNDOS CAMBIOS ocurridos en la sociedad de la  costa norte, que llevaron al surgimiento del APRA a comienzos de la década del 30 y que, evidentemente,  desencadenaron la sangrienta revolución de Trujillo de  1932, han estado vinculados en gran parte al",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-cueto-2008-caminos-ciencia-estado#p14",
+     "documento": "Contreras_Cueto_2008_Caminos_Ciencia_Estado",
+     "ubicacion": "p. 14",
+     "extracto": "648 História, Ciências, Saúde – Manguinhos, Rio de Janeiro Carlos Contrenas, Marcos Cueto años 1940, el Perú terminó de resolver sus conflictos limítrofes. Al solucionarse los límites con los países vecinos, la demarcación dejó de ser un asunto político y pasó",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p205",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 205",
+     "extracto": "205 De la nación sus regiones su posición social. Serán los inversionistas foráneos quienes  moverán la economía en las siguientes décadas. Tras la guerra, la recuperación económica de la región dependió nuevamente de la minería. Hacia 1888, la explotación  ar",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-1-transiciones-demograficas-2026-1#p27",
+     "documento": "Clase_S2_1_Transiciones_demográficas_2026_1",
+     "ubicacion": "p. 27",
+     "extracto": "Era Demografía Estructura de la  propiedad agraria Finanzas públicas Mercado de factores de  producción Ingreso per cápita I.  1569-  1718  Descenso de la población.  Fuertes cambios en la  composición étnica.  Aumento de las tasas de  urbanización. Predominio",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "sobrevilla-2021-disputa-jurisdicciones#p9",
+     "documento": "Sobrevilla_2021_Disputa_jurisdicciones",
+     "ubicacion": "p. 9",
+     "extracto": "INTRODUCCIÓN 17 La disputa entre estas formas de organización llevó a algunos publicistas a considerar que el centralismo era equivalente a la monarquía y al despo- tismo, mientras que para otros el federalismo fue sinónimo de desorden. La historia y la reflex",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2002-centralismo-peruano#p5",
+     "documento": "Contreras_2002_Centralismo_peruano",
+     "ubicacion": "p. 5",
+     "extracto": "5 EL CENTRALISMO PERUANO EN SU PERSPECTIVA HISTORICA L os actuales debates, tanto en la escena estatal como en el terreno de la opinión pública, acerca de la naturaleza del centralismo peruano y la mejor manera de ponerle fin y empezar a andar por la senda des",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué dice Aldana sobre las regiones vivas y activas?",
+   "bloques": [
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p5",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 5",
+     "extracto": "N   R SUSANA ALDANA RIVERA NELSON E. PEREYRA CHÁVEZ Regiones vivas y activas Nudos y fundamentos del Perú contemporáneo",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p1",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 1",
+     "extracto": "ALEX HERNÁNDEZ MURO Nudos de la República República de invisibles Políticas, ciudadanía y activismo lgbtiq+ Regiones vivas y activas: Nudos y fundamentos del Perú contemporáneo SUSANA ALDANA RIVERA NELSON E. PEREYRA CHÁVEZ Nudos de la República",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p15",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 15",
+     "extracto": "SUSANA ALDANA RIVERA NELSON E. PEREYRA CHÁVEZ Regiones vivas y activas Nudos y fundamentos del Perú contemporáneo",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué relación hay entre glaciares y el fenómeno del Niño?",
+   "bloques": [
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p2",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 2",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana4-2-2026-1#p8",
+     "documento": "Clase_Semana4_2_2026_1",
+     "ubicacion": "p. 8",
+     "extracto": "El Fenómeno El Niño es un evento climático que se  produce en el Océano Pacífico y que puede afectar  las condiciones meteorológicas y climáticas de  varios países, incluyendo Perú.  De acuerdo con el SENAMHI, el Fenómeno El Niño  se caracteriza por el aumento",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cavieses-2001-imprints-el-nino#p1",
+     "documento": "Cavieses_2001_Imprints_El_Niño",
+     "ubicacion": "p. 1",
+     "extracto": "7  rw  Imprints of El Niho in World History  Dramatic turns of events have occurred under the imperatives of climate,  but very few of them have been associated with El Nifo crises, perhaps  because historians are not familiar with the teleconnections that sew",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s3-1-pluralismo-medico-transiciones-epidemiologicas-20#p21",
+     "documento": "Clase_S3_1_Pluralismo_Médico_Transiciones_Epidemiológicas_2026_1",
+     "ubicacion": "p. 21",
+     "extracto": "• La peste bubónica (1903), las campañas de vacunación y la  creación de la Dirección de Salubridad marcan el paso hacia una  nueva racionalidad: la enfermedad es un fenómeno prevenible. Se  consolidan registros demográficos, inspecciones sanitarias y  campaña",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-7-1-hcp-2026-1#d3",
+     "documento": "Clase_Semana_7_1_HCP_2026_1",
+     "ubicacion": "diap. 3",
+     "extracto": "La mayoría de los glaciares del mundo se encuentran en las zonas templadas o polares, pero hay un grupo más pequeño de ellos en las zonas tropicales. Estos últimos, al estar en las áreas más cálidas del planeta, los hace tener poca nieve y ser altamente vulner",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "carey-2014-glaciares-cambioclimatico-caps-3-4#p11",
+     "documento": "Carey_2014_Glaciares_CambioClimático_caps_3_4",
+     "ubicacion": "p. 11",
+     "extracto": "Mark Carey Introducción intentó ampliar la laguna Shallap para convertirla en un reservorio en 2003, miles de huaracinos salieron las calles a protestar. Aun cuando los desascres glaciares destruyeron sus comunidades; los residentes urbanos reconstruyeron sobr",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "historia-critica-del-peru-122005-a-2026-01-pre#p8",
+     "documento": "Historia Crítica del Perú - 122005 - A (2026-01-PRE)",
+     "ubicacion": "p. 8",
+     "extracto": "Lima: IEP. Recomendada Pulgar Vidal, J. (2014). Las ocho regiones naturales del Perú. Terra Brasilis, https://journals.openedition.org/terrabrasilis/1027 Recomendada Ramírez, S. (2017). La economía colonial del Norte peruano. En Contreras, C. y Hernández. E. (",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "rivasplatavarillas-2014-cambio-paisajes-costa-norte#p20",
+     "documento": "RivasplataVarillas_2014_Cambio_paisajes_costa_norte",
+     "ubicacion": "p. 20",
+     "extracto": "60 Historia 2.0, Año IV, No. 8, Bucaramanga, diciembre 2014, ISSN 2027-9035, pp. Paula Ermila Rivasplata Varillas. Cambio de paisajes de la costa norte peruana desde una perspectiva histórica y geográfica 47-73 insumo para la próspera industria del jabón en lo",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p248",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 248",
+     "extracto": "268  Klarén  excepción y no la regla. En esas áreas arcaicas,  económicamente estáticas, como la sierra sur por ejemplo, desde 1931 el partido constantemente ha fallado en obtener una respuesta popular. Allí la hacienda  tradicional, no afectada por los cambio",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-6-2-hcp-2026-1#d16",
+     "documento": "Clase_Semana_6_2_HCP_2026_1",
+     "ubicacion": "diap. 16",
+     "extracto": "Natural. Asociado a fenómenos meteorológicos, geotectónicos, biológicos, de carácter extremo o fuera de lo normal. En el Perú se presentan peligros naturales como: terremotos, eventos El Niño, sequías severas, deslizamientos, deslaves o huaicos y lluvias estac",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué plantea O'Phelan sobre la independencia?",
+   "bloques": [
+    {
+     "bloque_id": "o-phelan-2019-norte-patriota-sur-realista#p1",
+     "documento": "O_Phelan_2019_Norte_patriota_Sur_realista",
+     "ubicacion": "p. 1",
+     "extracto": "FONDO EDITORIAL DEL CONGRESO DEL PERÚE COLECCIÓN BICENTENARIO DE LA INDEPENDENCIA 1821-2021 TERRITORIALIDAD Y PODER REGIONAL DE LAS INTENDENCIAS EN LAS INDEPENDENCIAS DE MÉXICO Y PERÚ SCARLETT O'PHELAN GODOY ANA CAROLINA IBARRA COMPILADORAS",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "o-phelan-2019-norte-patriota-sur-realista#p6",
+     "documento": "O_Phelan_2019_Norte_patriota_Sur_realista",
+     "ubicacion": "p. 6",
+     "extracto": "El gaditanismo <institucionals en las Huastecas (México) :(Re)Acomodo territorial-militar 0 una confrontación socioétnica? Antonio Escobar Ohmstede 247 Red vial y flujo de correspondencia Contingencias en el servicio de correos en el extremo sur peruano (1790-",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "o-phelan-2019-norte-patriota-sur-realista#p17",
+     "documento": "O_Phelan_2019_Norte_patriota_Sur_realista",
+     "ubicacion": "p. 17",
+     "extracto": "Scarlett 0'Phelan Godoy - Ana Carolina Ibarra 19 de menor rango, organizó la distribución de correspondencia por gran parte del virreinato adquiriendo; de paso, un valioso conocimiento in situ sobre el estado material de los caminos . Debe recordarse que el ún",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cahill-1993-independencia-sociedad-fiscalidad#p20",
+     "documento": "Cahill_1993_Independencia_sociedad_fiscalidad",
+     "ubicacion": "p. 20",
+     "extracto": "268 David P. Cahilí fase en el asalto sobre los recursos, estructura y autoridad política interna de las comunidades de la sierra sureña, cuya apariencia ya era la de un personaje mitológico con un cuerpo andino y una cabeza europea. A partir de 1780, las capa",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p101",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 101",
+     "extracto": "101 De la nación sus regiones convirtieron en colonos de las tierras de sus amos y manejaban una autonomía bastante grande.  Durante esta época —finales del siglo xviii—, la región  emergía al compás del establecimiento definitivo del sistema  occidental y su",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p6",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 6",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s3-1-pluralismo-medico-transiciones-epidemiologicas-20#p12",
+     "documento": "Clase_S3_1_Pluralismo_Médico_Transiciones_Epidemiológicas_2026_1",
+     "ubicacion": "p. 12",
+     "extracto": "• Este modelo describe el cambio histórico en los patrones de enfermedad y  mortalidad de una sociedad. Este proceso está vinculado a transformaciones en las  condiciones de vida, la urbanización, patrones culturales, el conocimiento  científico, la intervenci",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué son las ciudades intermedias?",
+   "bloques": [
+    {
+     "bloque_id": "marzal-ludena-2017-ciudadesintermedias#p6",
+     "documento": "Marzal_Ludeña_2017_Ciudadesintermedias",
+     "ubicacion": "p. 6",
+     "extracto": "CoNTENIDO  Efraín Gonzales de Olarte. Prólogo  José Canziani y Alexander Schejtman. Introducción  PRIMERA PARTE  Fernando Carrión. Ciudades intermedias: entre una pirámide trunca y una red urbana  9  13  en construcción  21  Alexander Schejtman. Desarrollo ter",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "marzal-ludena-2017-ciudadesintermedias#p2",
+     "documento": "Marzal_Ludeña_2017_Ciudadesintermedias",
+     "ubicacion": "p. 2",
+     "extracto": "José Canziani 1 Alexander Schejtman (editores)  CIUDADES INTERMEDIAS  Y DESARROLLO TERRITORIAL",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "espinoza-fort-espinoza-2022-reorganizar-el-peru#p21",
+     "documento": "Espinoza_Fort_Espinoza_2022_Reorganizar_el Perú",
+     "ubicacion": "p. 21",
+     "extracto": "/ El Perú pendiente: ensayos para un desarrollo con bienestar/ 298 mediante la migración de la población rural a ciudades intermedias que a  grandes ciudades (Christiaensen y Kanbur, 2017).  Más aún, el surgimiento de ciudades intermedias podría dinamizar la",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-6-1-hcp-2026-1#d15",
+     "documento": "Clase_Semana_6_1_HCP_2026_1",
+     "ubicacion": "diap. 15",
+     "extracto": "Luminosidad de 4 ciudades intermedias: Argentina: 24% Chile: 17% Perú: 1%",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana4-1-2026-1#p1",
+     "documento": "Clase_Semana4_1_2026_1",
+     "ubicacion": "p. 1",
+     "extracto": "Historia Crítica del Perú Geografía del  Perú",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p4",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 4",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aramburu-mendoza-2015-futuro-poblacion-peruana#p15",
+     "documento": "Aramburú_Mendoza_2015_Futuro_población_peruana",
+     "ubicacion": "p. 15",
+     "extracto": "19 Aramburú y Mendoza / El futuro de la población peruana: problemas y oportunidades Atenderlos supone, además de mejorar la vialidad (caminos rurales en la sierra y  mejora del transporte fluvial en la Amazonía), articularlos con la sociedad nacional  vía las",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "historia-critica-del-peru-122005-a-2026-01-pre#p6",
+     "documento": "Historia Crítica del Perú - 122005 - A (2026-01-PRE)",
+     "ubicacion": "p. 6",
+     "extracto": "Obligatoria Vega-Centeno Sara-Lafosse, R. y Alexandrino Ocaña, G. (2019). Economía y sociedades prehispánicas en el Sur andino. En Monsalve, M. (Ed.). Historia económica del Sur peruano. Lanas, minas y aguardiente en el espacio regional. Banco Central de Reser",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p133",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 133",
+     "extracto": "133 De la nación sus regiones Plata no superaba los 14 000 pobladores, mientras que en Arequipa residían sobre todo encomenderos y mestizos. Cusco, Arequipa, Potosí, La Paz y La Plata constituían los  vértices urbanos de un trapecio macrorregional en el que se",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana4-2-2026-1#p7",
+     "documento": "Clase_Semana4_2_2026_1",
+     "ubicacion": "p. 7",
+     "extracto": "Eventos/actividades que modifican la  geografía en el Perú",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué fue la disputa de jurisdicciones según Sobrevilla?",
+   "bloques": [
+    {
+     "bloque_id": "sobrevilla-2021-disputa-jurisdicciones#p1",
+     "documento": "Sobrevilla_2021_Disputa_jurisdicciones",
+     "ubicacion": "p. 1",
+     "extracto": "Repúblicas sudamericanas en construcción Hacia una historia en común NATALIA SOBREVILLA PEREA (editora) Petroperú % ;",
+     "oro": "si"
+    },
+    {
+     "bloque_id": "sobrevilla-2021-disputa-jurisdicciones#p2",
+     "documento": "Sobrevilla_2021_Disputa_jurisdicciones",
+     "ubicacion": "p. 2",
+     "extracto": "TRIOYTO AMSRICANA @4 S InDEPENDEMCIA 2err046  Imagen: Triunfo de la Independencia Americana Ackerman. Museo Histórico Nacional , Argentina.",
+     "oro": "si"
+    },
+    {
+     "bloque_id": "sobrevilla-2021-disputa-jurisdicciones#p11",
+     "documento": "Sobrevilla_2021_Disputa_jurisdicciones",
+     "ubicacion": "p. 11",
+     "extracto": "CAPITULO I LA DISPUTA POR LAS JURISDICCIONES Y LA FORMACIÓN ESTATAL: FEDERALISMO, CONFEDERACIONISMO Y CENTRALISMO EN AMÉRICA DEL SUR 1808-1850* NATALIA SOBREVILLA PEREA UNIVERSIDAD DE KENT INTRODUCCIÓN Los ESTADOS que hoy existen en Sudamérica se forjaron en l",
+     "oro": "si"
+    },
+    {
+     "bloque_id": "clase-semana-5-1-2026-1-hcp#p22",
+     "documento": "Clase_Semana_5_1_2026_1_HCP",
+     "ubicacion": "p. 22",
+     "extracto": "Las diócesis u obispados,  jurisdicciones de alcance regional, y  las parroquias, de alcance más local. La Iglesia fue un actor central en la  administración colonial. Se encargaba  del registro de nacimientos,  matrimonios y muertes, de la  educación, del cui",
+     "oro": "no"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p3",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 3",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "no"
+    }
+   ],
+   "faltantes": [],
+   "nota": "anotado por atribucion de autoria: son de oro los bloques del documento escrito por el autor que la pregunta nombra"
+  },
+  {
+   "pregunta": "¿Por qué varían tanto las cifras de población prehispánica?",
+   "bloques": [
+    {
+     "bloque_id": "aramburu-mendoza-2015-futuro-poblacion-peruana#p16",
+     "documento": "Aramburú_Mendoza_2015_Futuro_población_peruana",
+     "ubicacion": "p. 16",
+     "extracto": "Debates en Sociología N° 41, 2015 / ISSN 0254-9220 20 No obstante, la dinámica y volúmenes de flujos de la movilidad estacional es prácticamente desconocida en el país. 7. Las migraciones internacionales Hasta la década de 1980, el Perú fue una población «cerr",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-6-1-hcp-2026-1#d7",
+     "documento": "Clase_Semana_6_1_HCP_2026_1",
+     "ubicacion": "diap. 7",
+     "extracto": "Los parámetros que se tienen para definir o identificar una ciudad, o establecer un área urbana, varían conforme cada época. Así, actualmente una ciudad es entendida como tal cuando supera una cantidad de población y cuenta con una cantidad de servicios, mient",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2020-crisisdemografica-sigloxvi#p11",
+     "documento": "Contreras_2020_Crisisdemográfica_sigloXVI",
+     "ubicacion": "p. 11",
+     "extracto": "La crisis demográfica del siglo XVI en Los Andes: una discusión acerca de sus dimensiones y consecuencias 17 evasión que una bullente sociedad indígena habría  puesto en práctica35. Así, mientras la población indígena descen día aceleradamente, la población de",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-5-1-2026-1-hcp#p10",
+     "documento": "Clase_Semana_5_1_2026_1_HCP",
+     "ubicacion": "p. 10",
+     "extracto": "Regalado afirma que desde la época prehispánica  existía una región conformada por los actuales  departamentos de Moquegua, Tacna y la región  chilena de Arica, llamada Colesuyo; y un área  junto a una región oriental, llamada Omasuyo.",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p6",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 6",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p130",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 130",
+     "extracto": "4 / Decadencia urbana y crisis comercial 143  es espectacular si se considera que ocurrió probablemente  entre los años 1890 y 1916, cuando la migración de la  sierra fue más fuerte 12, y no durante la década de los años 80, en que la guerra con Chile asoló la",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p26",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 26",
+     "extracto": "Sitio arqueológico de Montegrande. Ubicado en la provincia de Jaén, departamento  de Cajamarca. El sitio data del año 3000 a.C. y corresponde a un templo ceremonial de  forma espiral, construido con adobe y cantos rodados y que probablemente represente a una s",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aramburu-2012-poblaciondiferente-pags-55-72#p1",
+     "documento": "Aramburú_2012_Poblacióndiferente_pags-55-72",
+     "ubicacion": "p. 1",
+     "extracto": "UNA POBLACIÓN DIFERENTE:  CINCO DÉCADAS DE CAMBIO DEMOGRÁFICO Carlos Eduardo Aramburú En este breve artículo presentamos la dinámica demográfica de la población  peruana en las últimas cinco décadas. Los cambios poblacionales son claves para  entender la dinám",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "marzal-ludena-2017-ciudadesintermedias#p3",
+     "documento": "Marzal_Ludeña_2017_Ciudadesintermedias",
+     "ubicacion": "p. 3",
+     "extracto": "José Canziani 1 Alexander Schejtman (editores)  CIUDADES INTERMEDIAS  Y DESARROLLO TERRITORIAL  \u0003i\u0004 ·  '·.%Jl  }OSÉ CANziANI AMico es arquitecto y urbanista por la  Universidad de Florencia y doctor en Arquitectura y  Urbanismo por la Escuela Politécnica de la",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "historia-critica-del-peru-122005-a-2026-01-pre#p7",
+     "documento": "Historia Crítica del Perú - 122005 - A (2026-01-PRE)",
+     "ubicacion": "p. 7",
+     "extracto": "Recomendada Diez Hurtado, A. (1998). Transiciones comunitarias. Los cabildos norteños entre la colonia y la República. En: OPhelan, Scarlett e Yves Saint-Geours (eds.). El norte en la historia regional, siglos XVIII-XIX. Lima: IFEA. Recomendada Dollfus, O. (19",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué es el concepto de nación según Contreras?",
+   "bloques": [
+    {
+     "bloque_id": "contreras-sf-concepto-nacion#p2",
+     "documento": "Contreras_sf_Concepto_Nación",
+     "ubicacion": "p. 2",
+     "extracto": "EL CONCEPTO  DE NACIÓN  Y SU EVOLUCIÓN  A TRAVÉS  DEL TIEMPO  CARLOS CONTRERAS El término nación se entiende hoy como un conjunto  grande de personas unidas por una cultura común y que  viven bajo un mismo gobierno, idealmente el de un Estado  soberano. Sobera",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-cueto-2008-caminos-ciencia-estado#p7",
+     "documento": "Contreras_Cueto_2008_Caminos_Ciencia_Estado",
+     "ubicacion": "p. 7",
+     "extracto": "v.15, n.3, p.635-655, jul.-set. 2008 641 Caminos, ciencia y Estado en el Perú, 1850-1930",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-1994-origenes-explosion-demografica#p1",
+     "documento": "Contreras_1994_Orígenes_explosión_demográfica",
+     "ubicacion": "p. 1",
+     "extracto": "http://www.iep.org.pe    SOBRE LOS ORÍGENES DE LA EXPLOSIÓN DEMOGRÁFICA EN EL PERÚ: 1876-1940* Carlos Contreras  DOCUMENTO DE TRABAJO Nº61  IEP Instituto de Estudios Peruanos  Documento de trabajo Nº61 Serie Economía Nº21      SOBRE LOS ORÍGENES DE LA  EXPLOSI",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2002-centralismo-peruano#p1",
+     "documento": "Contreras_2002_Centralismo_peruano",
+     "ubicacion": "p. 1",
+     "extracto": "1 EL CENTRALISMO PERUANO EN SU PERSPECTIVA HISTORICA CARLOS CONTRERAS Documento de Trabajo N° 127 IEP Instituto de Estudios Peruanos http://www.iep.org.pe",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p5",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 5",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "historia-critica-del-peru-122005-a-2026-01-pre#p4",
+     "documento": "Historia Crítica del Perú - 122005 - A (2026-01-PRE)",
+     "ubicacion": "p. 4",
+     "extracto": "demográfico. En Cambios sociales en el Peru 1968-2008, Orlando Plaza (Coordinador).   Pp.   55-72. https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/174317/Cam bios%20sociales%20en%20el%20Perú%201968-2008.pdf? sequence=1&isAllowed=y Obligatoria",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p61",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 61",
+     "extracto": "61 Entre la región y la nación historia nacional. El texto presenta a una localidad como una  totalidad y ve la nación a escala local, llegando a cuestionar  la historia centralista y el discurso de la identidad nacional.  Luego de su publicación, varios histo",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "renique-2022-nacion-radical-cap-4#p25",
+     "documento": "Renique_2022_Nación_Radical_cap.4",
+     "ubicacion": "p. 25",
+     "extracto": "habían llevado a la \"comprensión' y al \"entendimiento' del \"valor y el sentido de los indígenas en nuestro tiempo' Por el camino a la vez intelectual, sentimental y práctico del socialismo\" había llegado a esas certezas más bien. Que en el socialismo residía l",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "hcp-seminario-lecturas-2026-1-guion-alumnos#p1",
+     "documento": "HCP_Seminario_Lecturas_2026_1_Guion_Alumnos",
+     "ubicacion": "p. 1",
+     "extracto": "Curso Historia Crítica del Perú  Guía para el Seminario de lecturas  Lecturas  Nación, nacionalismo y regionalismo en perspectiva histórica  • Anderson, B. (2021). El origen de la conciencia nacional. En Comunidades imaginadas:  Reflexiones sobre el origen y l",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-2020-crisisdemografica-sigloxvi#p1",
+     "documento": "Contreras_2020_Crisisdemográfica_sigloXVI",
+     "ubicacion": "p. 1",
+     "extracto": "Nº 61, 2020. Páginas 7-25 Diálogo Andino LA CRISIS DEMOGRÁFICA DEL SIGLO XVI  EN LOS ANDES: UNA DISCUSIÓN ACERCA  DE SUS DIMENSIONES Y CONSECUENCIAS THE DEMOGRAPHIC CRISIS OF THE 16TH CENTURY IN THE ANDES:  A DISCUSSION ABOUT ITS DIMENSIONS AND CONSEQUENCES Ca",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Cómo influyó el cambio climático en los desastres naturales?",
+   "bloques": [
+    {
+     "bloque_id": "carey-2014-glaciares-cambioclimatico-caps-3-4#p1",
+     "documento": "Carey_2014_Glaciares_CambioClimático_caps_3_4",
+     "ubicacion": "p. 1",
+     "extracto": "p š Mark Carey Glaciares, cambio climático Y desastres naturales Ciencia y sociecad en el Peru IFEA EnDGsADAcs 0 6 ' 8 4 fablan acerca delos giaciares en el Perú y cel impacio que genera rrelimiento; pero hasta 2 actualidecrla mayora de innvesügeciones ha exam",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-6-2-hcp-2026-1#d1",
+     "documento": "Clase_Semana_6_2_HCP_2026_1",
+     "ubicacion": "diap. 1",
+     "extracto": "Historia Crítica del Perú Peligros naturales, vulnerabilidad, riesgo y desastre",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "carey-2014-glaciares-cambioclimatico-caps-3-4#p3",
+     "documento": "Carey_2014_Glaciares_CambioClimático_caps_3_4",
+     "ubicacion": "p. 3",
+     "extracto": "Mark Carey Introducción que el deshielo de los glaciares y el calentamiento global producen alrededor del mundo están los desastres naturales; la carestía de agua, la degradación de sitios turísticos y la desaparición de terreno para el montañismo. Aunque no c",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-6-2-hcp-2026-1#d3",
+     "documento": "Clase_Semana_6_2_HCP_2026_1",
+     "ubicacion": "diap. 3",
+     "extracto": "Los eventos naturales que ocurren alrededor del planeta son procesos propios del sistema terrestre.  Las sociedades humanas son las que tienen la fragilidad ante la ocurrencia de estos.  La mezcla de ambos es lo que se termina generando riesgos de desastres.",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-6-1-hcp-2026-1#d28",
+     "documento": "Clase_Semana_6_1_HCP_2026_1",
+     "ubicacion": "diap. 28",
+     "extracto": "¿Son espacios rurales? ¿Qué elementos los definen?",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p4",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 4",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "ejercicio-calificado-2#p1",
+     "documento": "Ejercicio Calificado 2",
+     "ubicacion": "p. 1",
+     "extracto": "FENÓMENOS NATURALES, CAMBIO CLIMÁTICO Y DESASTRES   INFORME GRUPAL SOBRE EL TERREMOTO DE ÁNCASH DE 1970    Ejercicio Calificado 2      Presentado por  José Santos Cerna Ruiz  Juan Diego Cossio De Izcue  Marjorie Alexandra Crisóstomo Arotinco  Paola Fernanda Or",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-5-1-2026-1-hcp#p23",
+     "documento": "Clase_Semana_5_1_2026_1_HCP",
+     "ubicacion": "p. 23",
+     "extracto": "Los corregimientos eran divisiones territoriales  encargadas de la administración de la justicia y la  recaudación de tributos en las comunidades  indígenas. La falta de límites claros entre los corregimientos  fue motivo de disputa entre los corregidores.  Ad",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-7-1-hcp-2026-1#d21",
+     "documento": "Clase_Semana_7_1_HCP_2026_1",
+     "ubicacion": "diap. 21",
+     "extracto": "Carey, Mark (2014). Glaciares, cambio climático y desastres naturales. Ciencia y Sociedad en el Perú. IEP Luis F. Zegarra, Juana Kuramoto, Manuel Glave, Nelson Manrique, Miguel Jaramillo, Rosa Huamán, Gonzalo Pastor, Luis Ponce, Carlos Parodi (2020). Compendio",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "sobrevilla-2021-disputa-jurisdicciones#p8",
+     "documento": "Sobrevilla_2021_Disputa_jurisdicciones",
+     "ubicacion": "p. 8",
+     "extracto": "16 REPÚBLICAS SUDAMERICANAS EN CONSTRUCCIÓN eran la base sobre la cual se organizaba el sistema de gobierno; fue desde ellas que comenzó el enfrentamiento político y armado_ Si bien hubo algu- nas localidades urbanas que crearon juntas administrativas para man",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué es la nación radical según Renique?",
+   "bloques": [
+    {
+     "bloque_id": "renique-2022-nacion-radical-cap-4#p1",
+     "documento": "Renique_2022_Nación_Radical_cap.4",
+     "ubicacion": "p. 1",
+     "extracto": "Indios e Indigenistas en el altiplano sur andino peruano, 1895-1930 Antes de que los esquemas maoístas inundaran suS documen- tos, José Carlos Mariátegui (1894-1930) aparecía como la figura central del firmamento ideológico. El nombre con que se harían tristem",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "renique-2022-nacion-radical-cap-4#p7",
+     "documento": "Renique_2022_Nación_Radical_cap.4",
+     "ubicacion": "p. 7",
+     "extracto": "reaparecerá Gutiérrez Cuevas en 1915. Poco se sabe del proceso que lo lleva a trascender el marco positivista que funciona como ideología oficial informal hacia una postura mesiánica. {Influyeron sus reminiscencias del \"Tayta' Cáceres de la campaña de la Breña",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "renique-2022-nacion-radical-cap-4#p14",
+     "documento": "Renique_2022_Nación_Radical_cap.4",
+     "ubicacion": "p. 14",
+     "extracto": "por la trayectoria de Valcárcel quien, de sus textos iniciales sobre la problemática regional ( La cuestión agraria\" y Problemas Des - centralistas' pasa a al tono mesiánico (Tempestad en los Andes) . De los Andes irradiará otra vez la cultura escribiría Valcá",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p7",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 7",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p164",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 164",
+     "extracto": "178  Klarén  Contrariamente a lo que pretenden sus biógrafos, quienes  sostienen que su celo revolucionario era ya aparente 26,  no hay evidencia de que en 1917 el futuro jefe máximo del  aprismo  fuera,  en  lo  más  mínimo,  radical  o  revolucionario. En re",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "historia-critica-del-peru-122005-a-2026-01-pre#p5",
+     "documento": "Historia Crítica del Perú - 122005 - A (2026-01-PRE)",
+     "ubicacion": "p. 5",
+     "extracto": "Obligatoria Klarén, P. (1976). Formación de las haciendas azucareras y orígenes del APRA. Lima: IEP (cap. 3) Obligatoria Lossio, J., Molina, A. y Cruz, M. (2023). La Corporación Peruana del Amazonas y el renacer del interés por el caucho y la quinina a mediado",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-sf-concepto-nacion#p1",
+     "documento": "Contreras_sf_Concepto_Nación",
+     "ubicacion": "p. 1",
+     "extracto": "EL CONCEPTO  DE NACIÓN  EL PASO DE LOS LIBERTADORES  (APOTEOSIS DE AYACUCHO)  Daniel Hernández  Siglo XX  /  Óleo sobre lienzo  61 x 114 cm  /  (PO-014)",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p7",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 7",
+     "extracto": "Índice Palabras preliminares  9 Presentación de la colección  11 Una historia en imágenes 19 Introducción  43 1.  Entre la región y la nación  47 1.1. La región  47 1.2. Teorías de región  54 1.3. Entre la región y la nación  64 2. Perfilando la historia de la",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p173",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 173",
+     "extracto": "173 De la nación sus regiones convocaron a una asamblea en la que acordaron luchar por  la descentralización para desarrollar las regiones y, luego, implantar el gobierno federal. Málaga se puso al frente del movimiento y difundió sus propuestas en Cusco y Pun",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p149",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 149",
+     "extracto": "149 De la nación sus regiones Por supuesto que los indígenas no se quedaron con los  brazos cruzados frente al voraz crecimiento de los latifundios.  Durante el oncenio de Leguía protagonizaron rebeliones al  verse motivados por el indigenismo y la presencia d",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Qué fue el pluralismo médico en el Perú colonial?",
+   "bloques": [
+    {
+     "bloque_id": "clase-s3-1-pluralismo-medico-transiciones-epidemiologicas-20#p2",
+     "documento": "Clase_S3_1_Pluralismo_Médico_Transiciones_Epidemiológicas_2026_1",
+     "ubicacion": "p. 2",
+     "extracto": "Saberes nativos y medicina indígena Dada la naturaleza holística del sistema de sanación  azteca, términos europeos como medicina y médico  ofrecen una visión limitada del alcance de la salud y la  sanación en el mundo azteca. Ticiyotl, traducido  aproximadame",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s3-1-pluralismo-medico-transiciones-epidemiologicas-20#p18",
+     "documento": "Clase_S3_1_Pluralismo_Médico_Transiciones_Epidemiológicas_2026_1",
+     "ubicacion": "p. 18",
+     "extracto": "• Las respuestas a la enfermedad en la sociedad colonial se  desarrollaron en un contexto de pluralismo médico.  Coexistían la medicina humoral de tradición europea, los  saberes terapéuticos indígenas, conocimientos de origen  africano y prácticas de curander",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "contreras-1994-origenes-explosion-demografica#p18",
+     "documento": "Contreras_1994_Orígenes_explosión_demográfica",
+     "ubicacion": "p. 18",
+     "extracto": "http://www.iep.org.pe    vacuno animal en el Perú y en 1896 se había creado ya el Instituto de Vacuna y Seroterapia.  Entre dicho año y 1905 alcanza vacunar a 93,193 personas (BDS, a.II, Nº 5). El número  de personas dedicadas a la atención sanitaria (médicos,",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-semana-5-1-2026-1-hcp#p12",
+     "documento": "Clase_Semana_5_1_2026_1_HCP",
+     "ubicacion": "p. 12",
+     "extracto": "Organización del territorio en la época colonial Durante el período colonial, el  Perú fue uno de los territorios  más importantes y extensos  del Imperio español.  El control de este territorio y su  administración fueron aspectos  fundamentales de la  organi",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aramburu-mendoza-2015-futuro-poblacion-peruana#p1",
+     "documento": "Aramburú_Mendoza_2015_Futuro_población_peruana",
+     "ubicacion": "p. 1",
+     "extracto": "Debates en Sociología N° 41, 2015, pp.  5-24  ISSN 0254-9220  * Carlos E. Aramburú es magíster en Demografía por la London School of Economics y Antropólogo por la Pontificia Universidad Católica del Perú. Profesor principal del Departamento de Ciencias  Socia",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "o-phelan-2019-norte-patriota-sur-realista#p34",
+     "documento": "O_Phelan_2019_Norte_patriota_Sur_realista",
+     "ubicacion": "p. 34",
+     "extracto": "404 Scarlett 0'Phelan Godoy tampoco se llegaría a un acuerdo, ya que las expectativas de patriotas y realistas eran diametralmente opuestas. Los realistas insistieron; una vez más, en que los patriotas juraran la Constitución liberal, mientras que los patriota",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p1",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 1",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "hcp-dialogosinterregionales-guion-2026-1-up-unsa#p1",
+     "documento": "HCP_Diálogosinterregionales_guion_2026_1_UP_UNSA",
+     "ubicacion": "p. 1",
+     "extracto": "Diálogos interregionales sobre la historia del Perú  Guion para el trabajo grupal    Presentación  El proyecto busca propiciar el diálogo entre alumnos y alumnas de la Universidad del Pacífico  y la Universidad Nacional San Agustín sobre ciertos procesos histó",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "hcp-seminario-lecturas-2026-1-guion-alumnos#p1",
+     "documento": "HCP_Seminario_Lecturas_2026_1_Guion_Alumnos",
+     "ubicacion": "p. 1",
+     "extracto": "Curso Historia Crítica del Perú  Guía para el Seminario de lecturas  Lecturas  Nación, nacionalismo y regionalismo en perspectiva histórica  • Anderson, B. (2021). El origen de la conciencia nacional. En Comunidades imaginadas:  Reflexiones sobre el origen y l",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "historia-critica-del-peru-122005-a-2026-01-pre#p1",
+     "documento": "Historia Crítica del Perú - 122005 - A (2026-01-PRE)",
+     "ubicacion": "p. 1",
+     "extracto": "Sílabo 122005 - Historia Crítica del Perú I. Información general Nombre del Curso: Historia Crítica del Perú Código del curso: 122005 Departamento Académico: Humanidades Créditos: 4 Horas Teoría: 4 Horas Práctica: 0 Periodo Académico: 2026-01-PRE Sección: A Mo",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  },
+  {
+   "pregunta": "¿Cómo se formaron las haciendas azucareras del norte?",
+   "bloques": [
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p3",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 3",
+     "extracto": "PETER F. KLAREN Formación   de las   haciendas  azucareras y   orígenes del   APRA                                          Instituto de Estudios Peruanos",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p8",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 8",
+     "extracto": "El año de 1974 fue el cincuentenario de uno de los  partidos que marcó el desarrollo político del Perú: el  APRA.. Gracias a los notables esfuerzos del historiador  norteamericano Peter F. Klarén disponemos ahora de uno  de los estudios que nos permite compren",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "klaren-1976-haciendas-azucareras-apra#p23",
+     "documento": "Klarén_1976_Haciendas_Azucareras_Apra",
+     "ubicacion": "p. 23",
+     "extracto": "28  Klarén  de la población de esa región, dislocados y frustrados por  la rápida desintegración de la sociedad tradicional. Estos  cambios estructurales son los que, en esencia, dieron  origen al movimiento aprista y los que explican el  persistente fenómeno",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p163",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 163",
+     "extracto": "163 De la nación sus regiones selva del río de Madre de Dios. En plena República, esta gran  región se fragmentó en regiones desde la aparición de circuitos mercantiles y demandas de autonomía local que cuajaron  en departamentos. Tan es así que, en pleno auge",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p17",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 17",
+     "extracto": "No, no hay país más diverso, más múltiple en  variedad terrena y humana; todos los grados  de calor y color, de amor y odio, de urdimbres y  sutilezas, de símbolos utilizados e inspiradores. No  por gusto, como diría la gente llamada común, se  formaron aquí P",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-2-intercambios-coloniales-enfermedades-2026-1#p35",
+     "documento": "Clase_S2_2_Intercambios_coloniales_enfermedades_2026_1",
+     "ubicacion": "p. 35",
+     "extracto": "• Las ovejas. Menos capaces de defenderse de los depredadores. No formaron  rebaños salvajes. Esencial para la producción de lana.  • Los perros. Más grandes y feroces que los perros americanos. Muchos  volvieron al estado salvaje. • Los gatos. También volvier",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "sobrevilla-2021-disputa-jurisdicciones#p13",
+     "documento": "Sobrevilla_2021_Disputa_jurisdicciones",
+     "ubicacion": "p. 13",
+     "extracto": "LA DISPUTA POR LAS JURISDICCIONES Y LA FORMACIÓN ESTATAL 21 qué fue así, consideramos que se debió a los diferentes niveles de penetra- ción burocrática, así como a una clara tendencia por la búsqueda de la auto - nomía administrativa. La tercera sección se co",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "cronograma-hcp-2026-1-a#p6",
+     "documento": "Cronograma_HCP_2026_1_A",
+     "ubicacion": "p. 6",
+     "extracto": "Anexo del sílabo – CRONOGRAMA DE ACTIVIDADES    CURSO: Historia Crítica del Perú  SECCIÓN: A  PROFESOR: Juan Fonseca  PERIODO ACADÉMICO: 2026 - 1  Semana  Clases y  fechas  Unidades de aprendizaje  Lecturas obligatorias  Lecturas recomendadas  Evaluaciones  /",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "clase-s2-1-transiciones-demograficas-2026-1#p14",
+     "documento": "Clase_S2_1_Transiciones_demográficas_2026_1",
+     "ubicacion": "p. 14",
+     "extracto": "• Como resultado de la independencia  se reconfiguró el territorio nacional.  A partir de los territorios de Alto  Perú se crea Bolivia. • Se produjo un crecimiento  importante tanto de Lima como el  norte del Perú como resultado de  una fuerte acumulación de",
+     "oro": "pendiente"
+    },
+    {
+     "bloque_id": "aldana-pereyra-2022-regiones-vivas-y-activas#p206",
+     "documento": "Aldana_Pereyra_2022_Regiones vivas y activas",
+     "ubicacion": "p. 206",
+     "extracto": "206 Regiones vivas y activas acreedores la administración de activos (como el ferrocarril  central) y la explotación de las tierras de montaña en varias  zonas de la Amazonía. Estos últimos, reunidos en la Peruvian  Corporation Limited, asumieron la explotació",
+     "oro": "pendiente"
+    }
+   ],
+   "faltantes": [],
+   "nota": ""
+  }
+ ]
+}
