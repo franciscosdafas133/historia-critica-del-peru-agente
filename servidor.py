@@ -129,6 +129,12 @@ def api_preguntar():
         "filtros": r["plan"]["filtros"],
         "paquetes": paquetes,
         "avisos": r["avisos"],
+        # Contrato del Apendice A de CERES-Omega: decision, estado por
+        # requisito, evidencia con procedencia y cobertura. El frontend
+        # todavia no lo consume, pero es lo que permite auditar por que el
+        # motor respondio o se abstuvo -- y sirve de firma para comprobar
+        # que version del motor esta sirviendo un despliegue.
+        "ceres": r.get("ceres"),
         "ms_recuperacion": round(t_recuperacion * 1000, 1),
         "respuesta": None,
         "verificacion": None,
