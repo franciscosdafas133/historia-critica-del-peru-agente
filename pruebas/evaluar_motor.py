@@ -242,6 +242,29 @@ def bloque_gate(motor, res):
         for q, d, n in malas:
             print(f"        FALLA [{d}, {n} frag]: {q}")
 
+    # Salud de la capa semantica DURANTE esta medicion. Sin este dato dos
+    # corridas del mismo codigo pueden dar 97,4% y 90,9% sin explicacion
+    # visible: la diferencia es que en una habia cuota de embeddings y en la
+    # otra no. Un resultado con la capa caida no es comparable con uno con la
+    # capa viva.
+    try:
+        import semantico
+        s = semantico.salud()
+        if not s["cargada"]:
+            print("\n  [!] capa semantica NO CARGADA: estas cifras son las del"
+                  " motor solo-lexico")
+        elif s["fallos"]:
+            print(f"\n  [!] capa semantica DEGRADADA durante la medicion: "
+                  f"{s['fallos']}/{s['llamadas']} llamadas fallaron "
+                  f"({100*s['tasa_fallo']:.0f}%)")
+            print(f"      {s['ultimo_error']}")
+            print("      Las cifras de abajo NO reflejan el motor completo.")
+        else:
+            print(f"\n  capa semantica activa: {s['llamadas']} llamadas, 0 fallos")
+        res["semantico"] = s
+    except Exception:                                   # noqa: BLE001
+        pass
+
     vp = len(DENTRO) - len(fn)
     vn = len(FUERA) - len(fp)
     prec = vp / (vp + len(fp)) if (vp + len(fp)) else 0.0
